@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckYourTea - Discreet Tea App Profile Lookup Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --accent-blue: #2563eb;
+            --accent-light: #3b82f6;
+            --light-bg: #f8fafc;
+            --white-bg: #ffffff;
+            --card-bg: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --success-green: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .cta-button {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white-bg) 0%, #f0f9ff 100%);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-blue);
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            background-color: var(--white-bg);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background-color: var(--white-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 4rem 2rem;
+            background-color: var(--light-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background-color: var(--white-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-blue);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-blue);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-blue);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 4rem 2rem;
+            background-color: var(--white-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            background-color: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+        }
+
+        .review-result {
+            font-size: 0.85rem;
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .review-stars {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Form Section */
+        .contact-section {
+            padding: 4rem 2rem;
+            background-color: var(--light-bg);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background-color: var(--white-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-group a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #e0f2fe;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .legal-text {
+            font-size: 0.85rem;
+            color: #e0f2fe;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            @media (max-width: 480px) {
+                header {
+                    padding: 0.75rem 1rem;
+                }
+
+                .nav-links {
+                    gap: 0.5rem;
+                    font-size: 0.8rem;
+                }
+
+                .hero {
+                    padding: 2rem 1rem;
+                    min-height: 400px;
+                }
+
+                .hero h1 {
+                    font-size: 1.8rem;
+                }
+
+                .cta-button {
+                    padding: 0.6rem 1.2rem;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">🔍 CheckYourTea</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('services')">Services</a></li>
+                <li><a onclick="scrollToSection('how-it-works')">How It Works</a></li>
+                <li><a onclick="scrollToSection('reviews')">Reviews</a></li>
+                <li><button class="cta-button" onclick="scrollToSection('contact')">Start Lookup</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>See What's Being Said About You</h1>
+        <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in 24 hours. One-time payment, no subscriptions.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="scrollToSection('services')">View Pricing</button>
+            <button class="btn-secondary" onclick="scrollToSection('how-it-works')">Learn How</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Profiles Searched</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24hrs</div>
+            <div class="stat-label">Fast Turnaround</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Discreet & Private</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Choose Your Package</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Self-Search Package</h3>
+                <div class="service-price">$29</div>
+                <div class="price-label">one-time payment</div>
+                <p>You take control. We provide access to search the Tea database yourself with clear instructions.</p>
+                <ul class="features-list">
+                    <li>Access to search tools</li>
+                    <li>Step-by-step instructions</li>
+                    <li>Instant start guide</li>
+                    <li>24-hour support</li>
+                </ul>
+                <button class="btn-primary" onclick="scrollToSection('contact')">Choose Package</button>
+            </div>
+            <div class="service-card">
+                <h3>Full Search Package</h3>
+                <div class="service-price">$49</div>
+                <div class="price-label">one-time payment</div>
+                <p>We handle the deep dive for you. Sit back and let us search the Tea database discreetly and thoroughly.</p>
+                <ul class="features-list">
+                    <li>We perform the search</li>
+                    <li>Verified results included</li>
+                    <li>Detailed analysis</li>
+                    <li>24-hour turnaround</li>
+                </ul>
+                <button class="btn-primary" onclick="scrollToSection('contact')">Choose Package</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">Simple Process</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Submit Details</h4>
+                <p>Provide information about who you want to search for. The more details, the better the match.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>We Search</h4>
+                <p>We conduct a comprehensive database search across Tea's platform discreetly and securely.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Get Results</h4>
+                <p>Receive verified results via email within 24 hours with clear screenshots and findings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Marcus T.</div>
+                    <div class="review-result">Result: Found</div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Provided exactly what I needed. The process was smooth and professional. Got my answer in less than 24 hours without any hassle."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Jordan K.</div>
+                    <div class="review-result">Result: Not Found</div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Fast and discreet. The transparency about what was searched and why made the outcome easy to understand."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Alex M.</div>
+                    <div class="review-result">Result: Found</div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Reliable service. Got the information I needed with clear screenshots and no unnecessary steps or delays."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Order Form -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Start Your Lookup</h2>
+        <div class="form-container">
+            <form id="lookupForm">
+                <div class="form-group">
+                    <label for="firstname">Your First Name</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email for Results</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="teausername">Tea Username/Handle</label>
+                    <input type="text" id="teausername" name="teausername" placeholder="@username" required>
+                </div>
+                <div class="form-group">
+                    <label for="package">Select Package</label>
+                    <select id="package" name="package" required>
+                        <option value="">Choose a package...</option>
+                        <option value="self-search">Self-Search Package ($29)</option>
+                        <option value="full-search">Full Search Package ($49)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Additional Information (Optional)</label>
+                    <textarea id="notes" name="notes" placeholder="Any details that could help with the search..."></textarea>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I confirm I have a lawful reason for this lookup and agree to the <a href="#" target="_blank">Terms of Service</a></label>
+                </div>
+                <button type="submit" class="submit-button">Submit Lookup Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#terms">Terms of Service</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="legal-text">
+                <p><strong>Legal Notice:</strong> CheckYourTea.com is an independent service and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with the Tea app or its developers. Tea is a trademark of its respective owners. This service operates independently and is designed to help users search public information. All lookups are conducted with privacy and discretion in mind.</p>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">© 2026 CheckYourTea. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('lookupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+            const teausername = document.getElementById('teausername').value;
+            const packageSelected = document.getElementById('package').value;
+            const notes = document.getElementById('notes').value;
+
+            // Create mailto link with form data
+            const subject = `Tea Lookup Request - ${packageSelected}`;
+            const body = `Name: ${firstName}\nEmail: ${email}\nTea Username: ${teausername}\nPackage: ${packageSelected}\n\nAdditional Info:\n${notes}\n\nPlease provide payment instructions and next steps.`;
+            
+            const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
