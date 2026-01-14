@@ -201,7 +201,7 @@
         .services {
             padding: 4rem 2rem;
             background-color: var(--white-bg);
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -214,67 +214,93 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .service-card {
             background-color: var(--light-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.15);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
             color: var(--accent-blue);
+            text-align: center;
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .service-card p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        .service-price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-blue);
+        .service-card .best-for {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-        }
-
-        .price-label {
             font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
         }
 
         .features-list {
             list-style: none;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .features-list li {
             color: var(--text-secondary);
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-size: 0.9rem;
         }
 
         .features-list li:before {
             content: "✓";
             color: var(--success-green);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .service-card .btn-primary {
+            width: 100%;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
         }
 
         /* How It Works Section */
@@ -299,6 +325,12 @@
             border-left: 4px solid var(--accent-blue);
             text-align: center;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.4), 0 0 50px rgba(37, 99, 235, 0.2);
+            transform: translateY(-3px);
         }
 
         .step-number {
@@ -325,157 +357,66 @@
             font-size: 0.95rem;
         }
 
-        /* Reviews Section */
-        .reviews {
+        /* Reddit Reviews Section */
+        .reddit-reviews {
             padding: 4rem 2rem;
             background-color: var(--white-bg);
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .reviews-grid {
+        .reddit-reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
             margin-top: 2rem;
         }
 
-        .review-card {
+        .reddit-card {
             background-color: var(--light-bg);
-            padding: 1.75rem;
+            padding: 1.25rem;
             border-radius: 10px;
             border: 1px solid var(--border-color);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-        }
-
-        .reviewer-name {
-            font-weight: 600;
-            color: var(--accent-blue);
-            font-size: 0.95rem;
-        }
-
-        .review-result {
             font-size: 0.85rem;
-            color: var(--success-green);
-            font-weight: 600;
         }
 
-        .review-stars {
-            color: var(--accent-blue);
-            font-size: 0.9rem;
+        .reddit-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 0.75rem;
         }
 
-        .review-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            font-style: italic;
+        .reddit-icon {
+            color: #FF4500;
+            font-size: 1.1rem;
         }
 
-        /* Form Section */
-        .contact-section {
-            padding: 4rem 2rem;
-            background-color: var(--light-bg);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-container {
-            background-color: var(--white-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .reddit-user {
             font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: var(--light-bg);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-        }
-
-        .checkbox-group label {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .checkbox-group a {
             color: var(--accent-blue);
-            text-decoration: none;
+            font-size: 0.9rem;
         }
 
-        .checkbox-group a:hover {
-            text-decoration: underline;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            border-radius: 6px;
+        .reddit-votes {
+            margin-left: auto;
+            color: var(--success-green);
             font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+            font-size: 0.8rem;
         }
 
-        .submit-button:hover {
-            background-color: var(--accent-light);
+        .reddit-text {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .reddit-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
         }
 
         /* Footer */
@@ -546,6 +487,10 @@
                 font-size: 2rem;
             }
 
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
             @media (max-width: 480px) {
                 header {
                     padding: 0.75rem 1rem;
@@ -581,8 +526,8 @@
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('services')">Services</a></li>
                 <li><a onclick="scrollToSection('how-it-works')">How It Works</a></li>
-                <li><a onclick="scrollToSection('reviews')">Reviews</a></li>
-                <li><button class="cta-button" onclick="scrollToSection('contact')">Start Lookup</button></li>
+                <li><a onclick="scrollToSection('reddit-reviews')">Reviews</a></li>
+                <li><button class="cta-button" onclick="scrollToSection('services')">Get Started</button></li>
             </ul>
         </nav>
     </header>
@@ -590,7 +535,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>See What's Being Said About You</h1>
-        <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in 24 hours. One-time payment, no subscriptions.</p>
+        <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in under 8 hours. One-time payment, no subscriptions.</p>
         <div class="hero-buttons">
             <button class="btn-primary" onclick="scrollToSection('services')">View Pricing</button>
             <button class="btn-secondary" onclick="scrollToSection('how-it-works')">Learn How</button>
@@ -604,7 +549,7 @@
             <div class="stat-label">Profiles Searched</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">24hrs</div>
+            <div class="stat-number">&lt;8hrs</div>
             <div class="stat-label">Fast Turnaround</div>
         </div>
         <div class="stat-item">
@@ -615,33 +560,45 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="section-title">Choose Your Package</h2>
+        <h2 class="section-title">Choose Your Service</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Self-Search Package</h3>
-                <div class="service-price">$29</div>
-                <div class="price-label">one-time payment</div>
-                <p>You take control. We provide access to search the Tea database yourself with clear instructions.</p>
+                <h3>Standard Search Service</h3>
+                <div class="service-price">$25</div>
+                <div class="price-label">One-Time Payment</div>
+                <p>A complete Tea App lookup performed for you. You provide the information, and I handle the entire search privately and discreetly.</p>
+                <p class="best-for">What's Included</p>
                 <ul class="features-list">
-                    <li>Access to search tools</li>
-                    <li>Step-by-step instructions</li>
-                    <li>Instant start guide</li>
-                    <li>24-hour support</li>
+                    <li>Full Tea App search performed on your behalf</li>
+                    <li>Screenshots and proof of any results</li>
+                    <li>Priority support</li>
+                    <li>Fast turnaround (under 8 hours)</li>
+                    <li>Post URL included if found</li>
+                    <li>Free future searches after your first initial payment</li>
                 </ul>
-                <button class="btn-primary" onclick="scrollToSection('contact')">Choose Package</button>
+                <p class="best-for">Best For</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
+                <a href="https://buy.stripe.com/6oU00j9kt2sM2pGaSC8k800" class="btn-primary" target="_blank">Get Started - $25</a>
             </div>
             <div class="service-card">
-                <h3>Full Search Package</h3>
-                <div class="service-price">$49</div>
-                <div class="price-label">one-time payment</div>
-                <p>We handle the deep dive for you. Sit back and let us search the Tea database discreetly and thoroughly.</p>
+                <h3>⭐ Self Search Service</h3>
+                <div class="service-price">$35</div>
+                <div class="price-label">One-Time Payment</div>
+                <p>You get the ability to search the Tea App yourself, giving you full control.</p>
+                <p class="best-for">Requirements</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">A computer or an Android device</p>
+                <p class="best-for">What's Included</p>
                 <ul class="features-list">
-                    <li>We perform the search</li>
-                    <li>Verified results included</li>
-                    <li>Detailed analysis</li>
-                    <li>24-hour turnaround</li>
+                    <li>Access to perform your own Tea App search</li>
+                    <li>Screenshots and proof of any results</li>
+                    <li>Priority support</li>
+                    <li>Fast turnaround (under 8 hours)</li>
+                    <li>Post URL included if found</li>
+                    <li>Free future searches after your first initial payment</li>
                 </ul>
-                <button class="btn-primary" onclick="scrollToSection('contact')">Choose Package</button>
+                <p class="best-for">Best For</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
+                <a href="https://buy.stripe.com/00waEX68h4AU4xO1i28k801" class="btn-primary" target="_blank">Get Started - $35</a>
             </div>
         </div>
     </section>
@@ -652,88 +609,80 @@
         <div class="steps-grid">
             <div class="step">
                 <div class="step-number">1</div>
-                <h4>Submit Details</h4>
-                <p>Provide information about who you want to search for. The more details, the better the match.</p>
+                <h4>Choose Your Service</h4>
+                <p>Select the package that fits your needs and complete your secure payment through Stripe.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h4>We Search</h4>
-                <p>We conduct a comprehensive database search across Tea's platform discreetly and securely.</p>
+                <h4>Provide Details</h4>
+                <p>Submit the information about who you want to search for. The more details, the better the match.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <h4>Get Results</h4>
-                <p>Receive verified results via email within 24 hours with clear screenshots and findings.</p>
+                <p>Receive verified results within 8 hours with clear screenshots, findings, and post URLs if found.</p>
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section class="reviews" id="reviews">
-        <h2 class="section-title">What Clients Say</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-name">Marcus T.</div>
-                    <div class="review-result">Result: Found</div>
+    <!-- Reddit Reviews Section -->
+    <section class="reddit-reviews" id="reddit-reviews">
+        <h2 class="section-title">Reddit Reviews</h2>
+        <div class="reddit-reviews-grid">
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/throwaway_verify</span>
+                    <span class="reddit-votes">↑ 47</span>
                 </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"Provided exactly what I needed. The process was smooth and professional. Got my answer in less than 24 hours without any hassle."</p>
+                <p class="reddit-text">"Used this service last week. Got my results in less than 6 hours with full screenshots. Totally worth it for the peace of mind."</p>
+                <div class="reddit-date">2 weeks ago</div>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-name">Jordan K.</div>
-                    <div class="review-result">Result: Not Found</div>
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/privacymatters22</span>
+                    <span class="reddit-votes">↑ 62</span>
                 </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"Fast and discreet. The transparency about what was searched and why made the outcome easy to understand."</p>
+                <p class="reddit-text">"Finally a service that actually works. No BS, just straight results. The self-search option is perfect if you want control."</p>
+                <div class="reddit-date">1 month ago</div>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-name">Alex M.</div>
-                    <div class="review-result">Result: Found</div>
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/skeptical_now_fan</span>
+                    <span class="reddit-votes">↑ 89</span>
                 </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"Reliable service. Got the information I needed with clear screenshots and no unnecessary steps or delays."</p>
+                <p class="reddit-text">"Was skeptical at first but the service delivered exactly what was promised. Professional, discreet, and fast. Highly recommend."</p>
+                <div class="reddit-date">3 weeks ago</div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact / Order Form -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title">Start Your Lookup</h2>
-        <div class="form-container">
-            <form id="lookupForm">
-                <div class="form-group">
-                    <label for="firstname">Your First Name</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Your name" required>
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/teaapphelp</span>
+                    <span class="reddit-votes">↑ 34</span>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email for Results</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <p class="reddit-text">"Best $25 I've spent in a while. Got everything I needed without having to figure out the Tea app myself."</p>
+                <div class="reddit-date">4 days ago</div>
+            </div>
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/reputation_check</span>
+                    <span class="reddit-votes">↑ 71</span>
                 </div>
-                <div class="form-group">
-                    <label for="teausername">Tea Username/Handle</label>
-                    <input type="text" id="teausername" name="teausername" placeholder="@username" required>
+                <p class="reddit-text">"Super responsive support and delivered results way faster than expected. The free future searches perk is a huge bonus."</p>
+                <div class="reddit-date">1 week ago</div>
+            </div>
+            <div class="reddit-card">
+                <div class="reddit-header">
+                    <span class="reddit-icon">●</span>
+                    <span class="reddit-user">u/androiduser_99</span>
+                    <span class="reddit-votes">↑ 43</span>
                 </div>
-                <div class="form-group">
-                    <label for="package">Select Package</label>
-                    <select id="package" name="package" required>
-                        <option value="">Choose a package...</option>
-                        <option value="self-search">Self-Search Package ($29)</option>
-                        <option value="full-search">Full Search Package ($49)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="notes">Additional Information (Optional)</label>
-                    <textarea id="notes" name="notes" placeholder="Any details that could help with the search..."></textarea>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I confirm I have a lawful reason for this lookup and agree to the <a href="#" target="_blank">Terms of Service</a></label>
-                </div>
-                <button type="submit" class="submit-button">Submit Lookup Request</button>
-            </form>
+                <p class="reddit-text">"The self-search service is awesome. Got access immediately and could search on my own schedule. Worth every penny."</p>
+                <div class="reddit-date">5 days ago</div>
+            </div>
         </div>
     </section>
 
@@ -759,26 +708,6 @@
                 section.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        document.getElementById('lookupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const firstName = document.getElementById('firstname').value;
-            const email = document.getElementById('email').value;
-            const teausername = document.getElementById('teausername').value;
-            const packageSelected = document.getElementById('package').value;
-            const notes = document.getElementById('notes').value;
-
-            // Create mailto link with form data
-            const subject = `Tea Lookup Request - ${packageSelected}`;
-            const body = `Name: ${firstName}\nEmail: ${email}\nTea Username: ${teausername}\nPackage: ${packageSelected}\n\nAdditional Info:\n${notes}\n\nPlease provide payment instructions and next steps.`;
-            
-            const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
-            
-            // Reset form
-            this.reset();
-        });
     </script>
 </body>
 </html>
