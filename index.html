@@ -357,66 +357,183 @@
             font-size: 0.95rem;
         }
 
-        /* Reddit Reviews Section */
-        .reddit-reviews {
+        /* Reviews Section - NEW */
+        .reviews-section {
             padding: 4rem 2rem;
             background-color: var(--white-bg);
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .reddit-reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-            margin-top: 2rem;
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1rem;
         }
 
-        .reddit-card {
-            background-color: var(--light-bg);
-            padding: 1.25rem;
-            border-radius: 10px;
+        .reviews-container-wrapper {
+            position: relative;
+            background: linear-gradient(135deg, #f0f9ff 0%, var(--white-bg) 100%);
             border: 1px solid var(--border-color);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            font-size: 0.85rem;
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow: hidden;
         }
 
-        .reddit-header {
+        .reviews-scroll-container {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            overflow-y: auto;
+            max-height: 650px;
+            padding-right: 0.5rem;
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar-track {
+            background: rgba(200, 200, 200, 0.2);
+            border-radius: 10px;
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 10px;
+            border: 2px solid var(--white-bg);
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+
+        .review-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
+            background-color: var(--white-bg);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .reddit-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .review-user-info {
+            flex-grow: 1;
+        }
+
+        .review-username {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .review-meta {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
-        .reddit-icon {
-            color: #FF4500;
-            font-size: 1.1rem;
-        }
-
-        .reddit-user {
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background-color: #dcfce7;
+            color: var(--success-green);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: var(--accent-blue);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            color: #fbbf24;
             font-size: 0.9rem;
         }
 
-        .reddit-votes {
-            margin-left: auto;
-            color: var(--success-green);
-            font-weight: 600;
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .review-text .highlight {
+            background: rgba(37, 99, 235, 0.15);
+            padding: 0 3px;
+            border-radius: 2px;
+            font-weight: 500;
+            color: var(--accent-blue);
+        }
+
+        .review-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .review-date {
             font-size: 0.8rem;
         }
 
-        .reddit-text {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
+        .review-link-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .reddit-date {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            opacity: 0.7;
+        .review-card:hover .review-link-indicator {
+            opacity: 1;
         }
 
         /* Footer */
@@ -489,6 +606,11 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .reviews-scroll-container {
+                grid-template-columns: 1fr;
+                max-height: 500px;
             }
 
             @media (max-width: 480px) {
@@ -625,63 +747,14 @@
         </div>
     </section>
 
-    <!-- Reddit Reviews Section -->
-    <section class="reddit-reviews" id="reddit-reviews">
-        <h2 class="section-title">Reddit Reviews</h2>
-        <div class="reddit-reviews-grid">
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/throwaway_verify</span>
-                    <span class="reddit-votes">↑ 47</span>
-                </div>
-                <p class="reddit-text">"Used this service last week. Got my results in less than 6 hours with full screenshots. Totally worth it for the peace of mind."</p>
-                <div class="reddit-date">2 weeks ago</div>
-            </div>
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/privacymatters22</span>
-                    <span class="reddit-votes">↑ 62</span>
-                </div>
-                <p class="reddit-text">"Finally a service that actually works. No BS, just straight results. The self-search option is perfect if you want control."</p>
-                <div class="reddit-date">1 month ago</div>
-            </div>
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/skeptical_now_fan</span>
-                    <span class="reddit-votes">↑ 89</span>
-                </div>
-                <p class="reddit-text">"Was skeptical at first but the service delivered exactly what was promised. Professional, discreet, and fast. Highly recommend."</p>
-                <div class="reddit-date">3 weeks ago</div>
-            </div>
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/teaapphelp</span>
-                    <span class="reddit-votes">↑ 34</span>
-                </div>
-                <p class="reddit-text">"Best $25 I've spent in a while. Got everything I needed without having to figure out the Tea app myself."</p>
-                <div class="reddit-date">4 days ago</div>
-            </div>
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/reputation_check</span>
-                    <span class="reddit-votes">↑ 71</span>
-                </div>
-                <p class="reddit-text">"Super responsive support and delivered results way faster than expected. The free future searches perk is a huge bonus."</p>
-                <div class="reddit-date">1 week ago</div>
-            </div>
-            <div class="reddit-card">
-                <div class="reddit-header">
-                    <span class="reddit-icon">●</span>
-                    <span class="reddit-user">u/androiduser_99</span>
-                    <span class="reddit-votes">↑ 43</span>
-                </div>
-                <p class="reddit-text">"The self-search service is awesome. Got access immediately and could search on my own schedule. Worth every penny."</p>
-                <div class="reddit-date">5 days ago</div>
+    <!-- Reviews Section - NEW SCROLLABLE -->
+    <section class="reviews-section" id="reddit-reviews">
+        <h2 class="section-title">Client Testimonials</h2>
+        <p class="section-subtitle">Real reviews from real users. Click any card to view the original Reddit comment.</p>
+        
+        <div class="reviews-container-wrapper">
+            <div class="reviews-scroll-container" id="reviews-grid">
+                <!-- Reviews will be dynamically inserted here -->
             </div>
         </div>
     </section>
@@ -702,6 +775,90 @@
     </footer>
 
     <script>
+        // Reviews data - 35 verified testimonials
+        const reviewsData = [
+            {"username":"u/OkAcanthopterygii894","text":"my boy solid. legit and quick with it!","date":"1h ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nvh5xx8/"},
+            {"username":"u/amdkea","text":"Yo this the truth real talk great service","date":"5h ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nvg2ccp/"},
+            {"username":"u/Reasonable_Policy227","text":"Unlike the scammers you see online, this guy is legitimate. I sent him a message a few hours ago for and replied immediately. Smooth and painless process. Nothing but great things to say.","date":"6h ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nvfy944/"},
+            {"username":"u/zriver","text":"Super awesome dude, he was very quick to respond and incredibly helpful. I absolutely recommend him.","date":"15h ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nvd3a4a/"},
+            {"username":"u/Dytzz","text":"helped me a lot, responded immediately and is very friendly, I totally recommend him","date":"2d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nv4hsob/"},
+            {"username":"u/FluidRecognitionX","text":"I recently utilized his services to ensure I wasn't on the tea app, and it was a quick and straightforward process. He walked me through and provided me with tips on how to find myself. There was no pressure or rush to go through the app. I was done when I conducted a thorough search across different states. I would highly recommend it, especially if you've been called out on other platforms.","date":"5d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/numvhqf/"},
+            {"username":"u/DirectionMinute8788","text":"TL;DR: this is legit, fast, and the person who searched for me was kind, communicative, and punctual. Very positive experience. I never post, never comment, and am in general very skeptical when it comes to people offering services on the internet. I looked at other comments and thought they were bots, but found positive reviewers with enough history to allay doubt. The process was easy, seamless, and very quick. Communication was quick, kind, and professional. 10/10: I'd recommend this to anyone.","date":"7d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nu9u5ng/"},
+            {"username":"u/Wesker-HATER-","text":"Vouching for this guy, I bought a verified Tea App account off him. He was very helpful and I had a good experience doing business with him!","date":"8d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nu29iad/"},
+            {"username":"u/CharacterYam4332","text":"He's a real dude, helped a lot and put my mind at ease a great guy","date":"9d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/ntwt86y/"},
+            {"username":"u/ThisFun3947","text":"This guy is the goat. Super nice and professional, very reasonable rates and does exactly what it tells you. Let me explore the app by myself for 30 minutes — looked up myself and all my friends. Cannot recommend this service more.","date":"11d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/ntkepy1/"},
+            {"username":"u/ExcellentNotice5187","text":"I've used the service and it is 100% legit and worked very well for me","date":"13d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nt7ol9k/"},
+            {"username":"u/BadLast","text":"I was trying to find someone to help me do a tea search. He's totally legit and did more than you'd expect. Professional and kind. Price was fair and well worth it.","date":"17d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nslkbwd/"},
+            {"username":"u/trader710","text":"This dude went above and beyond helping me and is extremely professional. I highly recommend him if you need any help. Very fair pricing.","date":"19d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/ns53xmn/"},
+            {"username":"u/Fancy-Alternative-79","text":"I messaged him and was using the app within minutes! This man is awesome and legit. He walked me through it and made the search very easy!","date":"22d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nrnt5p9/"},
+            {"username":"u/Outrageous-End-1089","text":"Best service available. Great guy, very helpful. Well worth the money. Don't hesitate to reach out. He's 100% legit!","date":"24d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nrc9d6r/"},
+            {"username":"u/Flimsy-Fox-5868","text":"Was weary at first, got my post taken down within 48 hours and very responsive.","date":"25d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nr6n8k1/"},
+            {"username":"u/Sad-Outcome-9365","text":"This guy is the goat solid guy and gives constant updates he got my post down in less than a week","date":"26d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nqxxvrv/"},
+            {"username":"u/Nearby-Turnover-1337","text":"Amazing guy honestly, very patient and understanding got the work done very quickly. I couldn't be more happier with the results! Services like this are God sent to us men trying to live an already difficult life.","date":"26d ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nqwre6i/"},
+            {"username":"u/Just-Reference312","text":"He does actually help you out for a very affordable fee. He's a real guy and it's not some kind of scam. He did some searching for me and he is chill to deal with but takes your best interest seriously. Highly recommend.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nqcgchf/"},
+            {"username":"u/yoda4president","text":"This guy is awesome. Was very open and vocal with the help and process. He did exactly what he promised. Stand up guy. Would recommend to anyone who needs the assistance!","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nqaq9fw/"},
+            {"username":"u/RatioFluid7713","text":"He's delivers on what you're asking for and is a solid bro","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq4tvn5/"},
+            {"username":"u/Upbeat_Statement_942","text":"Great guy took the time to answer all my questions and helped me. He's the real deal!","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq4cry3/"},
+            {"username":"u/Particular_Policy250","text":"Everythingscoolbro is legit!!! He got back to me very quickly. He was very friendly, responsive, and reasonable. He efficiently helped me with post removal and had good communication.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq2o8cd/"},
+            {"username":"u/SeaworthinessOk1307","text":"He is legit, he helped us with multiple issues and I can't thank him enough.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq2kdyl/"},
+            {"username":"u/Substantial-Foot-164","text":"I was admittedly skeptical at first but he is legit. Not judgemental and not in it for the money. I really appreciated his transparency and quick responses.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq2ddcr/"},
+            {"username":"u/duck_135","text":"This guy knows what he is doing. He got my profile removed very quickly. He has a whole system of methods and they work very well. Great guy and extremely knowledgeable.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nq1yvl1/"},
+            {"username":"u/OkSolid2429","text":"I found out I was posted on the tea app and felt anxious about it. I came across OP and within 20 minutes he replied and was just a genuine dude who wanted to help. He truly puts his customers first. The post came down in less than a week. 10/10!","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/npyo7cj/"},
+            {"username":"u/DataQueasy5624","text":"Great guy. Helps you out. Pricing is very fair for what you get. Gives advice on what your next move should be. Would definitely recommend him to anyone","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/npseof7/"},
+            {"username":"u/Sudden-Experience352","text":"This guy has to be one of the most caring, hardworking, and legit people I've ever met. He won't even accept more money than he actually needs which speaks volumes. He truly cares for each person he's helped.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nposngk/"},
+            {"username":"u/jetsareprettycool","text":"Great dude, quick response times and fair pricing. 10/10 is a huge lifesaver. Definitely the better alternative than shady websites. I can vouch for sure.","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/npdaiew/"},
+            {"username":"u/butzhavebeenseen","text":"Awesome guy to deal with! Very helpful!","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/no9pteo/"},
+            {"username":"u/JarJarJames","text":"Very fast responses and was very fair. He's legit! Reach out to him for your peace of mind","date":"1mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/no7xcbc/"},
+            {"username":"u/blart_89","text":"My guy was quick to reply. Search results came back quick. Just nice having the peace of mind. 10/10 recommend.","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nnmp430/"},
+            {"username":"u/Time-Introduction631","text":"He is amazing! Great communicator, provides you with a tailored range of options based on your needs. I could not recommend him enough! Truly a grinder who will help you remove your post!","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nnm4bw0/"},
+            {"username":"u/Sacred_B","text":"Helped me out and was really cool about the whole thing. +rep","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nndo164/"},
+            {"username":"u/Traditional_Lock_204","text":"My girlfriend was telling me how I was on the tea app. He was able to get it down in 2 business days for a great price. On top of his service he's a great genuine guy. Look no further than this guy.","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nn8o3e3/"},
+            {"username":"u/Upper_Cucumber_6662","text":"Shoutout to him for going above and beyond to help me get a post removed. He was incredibly kind, patient, and quick to respond. It's rare to find someone online who genuinely cares.","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nn6fgzo/"},
+            {"username":"u/Confident-Can-2977","text":"Quick, responsive, and above all professional. He really is a cool bro and very easy to work with. He sends pics and vids if your name is found. Definitely recommend.","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nmvpg4s/"},
+            {"username":"u/Wrongdoer-Inner","text":"yo just dropping a quick shout-out to this guy — super solid guy. He helped me out big time, stayed responsive, walked me through everything. If you're on the fence, I'd absolutely recommend working with him.","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nl97lgy/"},
+            {"username":"u/john247001","text":"This guy is the real deal. Found out I was posted and hit him up and then it was smooth sailing. Super genuine and quick. He walks you through absolutely everything. Can't recommend him enough!","date":"2mo ago","url":"https://www.reddit.com/r/vouchvault/comments/1mi176i/comment/nlwfvyu/"}
+        ];
+
+        function highlightKeywords(text) {
+            const keywords = ['legit', 'fast', 'recommend', 'peace of mind', 'real deal', 'worth it', 'solid', 'helpful', 'trustworthy', 'quick', 'great', 'awesome', 'professional', 'responsive'];
+            let highlightedText = text;
+            keywords.forEach(word => {
+                const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+                highlightedText = highlightedText.replace(regex, '<span class="highlight">$1</span>');
+            });
+            return highlightedText;
+        }
+
+        function renderReviews() {
+            const grid = document.getElementById('reviews-grid');
+            grid.innerHTML = reviewsData.map((review, index) => `
+                <a href="${review.url}" target="_blank" class="review-card">
+                    <div class="review-header">
+                        <div class="reddit-avatar">r</div>
+                        <div class="review-user-info">
+                            <div class="review-username">${review.username}</div>
+                            <div class="review-meta">
+                                <span class="verified-badge">✓ Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-stars">
+                        <span>★★★★★</span>
+                    </div>
+                    
+                    <p class="review-text">${highlightKeywords(review.text)}</p>
+                    
+                    <div class="review-footer">
+                        <span class="review-date">${review.date}</span>
+                        <span class="review-link-indicator">View on Reddit →</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderReviews);
+
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
