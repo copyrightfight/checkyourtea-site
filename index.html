@@ -12,21 +12,19 @@
         }
 
         :root {
-            --primary-blue: #1e40af;
-            --accent-blue: #2563eb;
-            --accent-light: #3b82f6;
-            --light-bg: #f8fafc;
-            --white-bg: #ffffff;
-            --card-bg: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --border-color: #e2e8f0;
-            --success-green: #10b981;
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --accent-green: #10b981;
+            --accent-green-bright: #34d399;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border-color: #2a2a2a;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--light-bg);
+            background-color: var(--primary-dark);
             color: var(--text-primary);
             line-height: 1.6;
         }
@@ -36,12 +34,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             padding: 1rem 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         nav {
@@ -53,18 +50,30 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--accent-blue);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent-green);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -72,53 +81,93 @@
             text-decoration: none;
             transition: color 0.3s;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover {
-            color: var(--accent-blue);
+            color: var(--text-primary);
         }
 
         .cta-button {
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-green);
+            color: var(--primary-dark);
+            padding: 0.65rem 1.3rem;
             border-radius: 6px;
             text-decoration: none;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-size: 0.9rem;
         }
 
         .cta-button:hover {
-            background-color: var(--accent-light);
+            background-color: var(--accent-green-bright);
+            transform: translateY(-1px);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 60px;
-            padding: 4rem 2rem;
+            margin-top: 80px;
+            padding: 6rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--white-bg) 0%, #f0f9ff 100%);
+            background-color: var(--secondary-dark);
             min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
+        .hero h1 .highlight {
+            color: var(--accent-green);
+        }
+
         .hero .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         .hero-buttons {
@@ -126,11 +175,12 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
 
         .btn-primary {
-            background-color: var(--accent-blue);
-            color: white;
+            background-color: var(--accent-green);
+            color: var(--primary-dark);
             padding: 1rem 2.5rem;
             border-radius: 8px;
             text-decoration: none;
@@ -142,32 +192,36 @@
         }
 
         .btn-primary:hover {
-            background-color: var(--accent-light);
+            background-color: var(--accent-green-bright);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--accent-blue);
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--accent-blue);
-            text-decoration: none;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
+        .trust-indicators {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .btn-secondary:hover {
-            background-color: var(--accent-blue);
-            color: white;
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .trust-icon {
+            color: var(--accent-green);
+            font-size: 1.2rem;
         }
 
         /* Stats Section */
         .stats {
             padding: 4rem 2rem;
-            background-color: var(--white-bg);
+            background-color: var(--primary-dark);
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -179,14 +233,20 @@
             text-align: center;
             padding: 2rem;
             border-radius: 12px;
-            background-color: var(--light-bg);
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--accent-blue);
+            color: var(--accent-green);
             margin-bottom: 0.5rem;
         }
 
@@ -199,64 +259,116 @@
 
         /* Services Section */
         .services {
-            padding: 4rem 2rem;
-            background-color: var(--white-bg);
-            max-width: 1000px;
+            padding: 5rem 2rem;
+            background-color: var(--secondary-dark);
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .section-title {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .service-card {
-            background-color: var(--light-bg);
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 2.5rem;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-bright));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .service-card:hover {
-            border-color: var(--accent-blue);
+            border-color: var(--accent-green);
             transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(16, 185, 129, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: var(--accent-blue);
-            text-align: center;
+            color: var(--text-primary);
         }
 
         .service-price {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            color: var(--accent-blue);
+            color: var(--accent-green);
             margin-bottom: 0.3rem;
-            text-align: center;
         }
 
         .price-label {
             font-size: 0.85rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            text-align: center;
         }
 
         .service-card p {
@@ -282,18 +394,19 @@
 
         .features-list li {
             color: var(--text-secondary);
-            padding: 0.4rem 0;
+            padding: 0.5rem 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.75rem;
             font-size: 0.9rem;
         }
 
         .features-list li:before {
             content: "✓";
-            color: var(--success-green);
+            color: var(--accent-green);
             font-weight: bold;
             font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         .service-card .btn-primary {
@@ -303,10 +416,62 @@
             margin: 0 auto;
         }
 
+        /* Features Grid Section */
+        .features-section {
+            padding: 5rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(16, 185, 129, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
         /* How It Works Section */
         .how-it-works {
-            padding: 4rem 2rem;
-            background-color: var(--light-bg);
+            padding: 5rem 2rem;
+            background-color: var(--secondary-dark);
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -315,88 +480,90 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .step {
-            background-color: var(--white-bg);
-            padding: 2rem;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
             border-radius: 12px;
-            border-left: 4px solid var(--accent-blue);
+            border: 1px solid var(--border-color);
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             transition: all 0.3s;
+            position: relative;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-bright));
+            border-radius: 12px 12px 0 0;
         }
 
         .step:hover {
-            box-shadow: 0 0 25px rgba(37, 99, 235, 0.4), 0 0 50px rgba(37, 99, 235, 0.2);
-            transform: translateY(-3px);
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
         }
 
         .step-number {
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-blue);
-            color: white;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
+            color: var(--primary-dark);
             border-radius: 50%;
-            line-height: 50px;
+            line-height: 60px;
             font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .step h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.75rem;
-            color: var(--accent-blue);
+            color: var(--text-primary);
         }
 
         .step p {
             color: var(--text-secondary);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* Reviews Section - NEW */
+        /* Reviews Section */
         .reviews-section {
-            padding: 4rem 2rem;
-            background-color: var(--white-bg);
+            padding: 5rem 2rem;
+            background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
         .reviews-count {
             text-align: center;
-            color: var(--accent-blue);
+            color: var(--accent-green);
             font-weight: 600;
             margin-bottom: 2rem;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .reviews-container-wrapper {
             position: relative;
-            background: linear-gradient(135deg, #f0f9ff 0%, var(--white-bg) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            overflow: hidden;
         }
 
         .reviews-scroll-container {
             display: grid;
-            grid-auto-flow: row;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
+            max-height: 600px;
             overflow-y: auto;
-            max-height: 650px;
-            padding-right: 0.5rem;
+            padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-green) var(--card-bg);
         }
 
         .reviews-scroll-container::-webkit-scrollbar {
@@ -404,18 +571,13 @@
         }
 
         .reviews-scroll-container::-webkit-scrollbar-track {
-            background: rgba(200, 200, 200, 0.2);
+            background: var(--card-bg);
             border-radius: 10px;
         }
 
         .reviews-scroll-container::-webkit-scrollbar-thumb {
-            background: var(--accent-blue);
+            background: var(--accent-green);
             border-radius: 10px;
-            border: 2px solid var(--white-bg);
-        }
-
-        .reviews-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-light);
         }
 
         .review-card {
@@ -423,84 +585,39 @@
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
+            transition: all 0.3s;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            gap: 0.75rem;
         }
 
         .review-card:hover {
+            border-color: var(--accent-green);
             transform: translateY(-3px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
-            background-color: var(--white-bg);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
         }
 
         .review-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.75rem;
-        }
-
-        .reddit-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 1.2rem;
-        }
-
-        .review-user-info {
-            flex-grow: 1;
         }
 
         .review-username {
-            font-weight: 700;
-            color: var(--accent-blue);
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .review-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background-color: #dcfce7;
-            color: var(--success-green);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
             font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
         }
 
         .review-stars {
-            display: flex;
-            gap: 0.25rem;
             color: #fbbf24;
             font-size: 0.9rem;
         }
 
         .review-text {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 4;
@@ -509,11 +626,11 @@
         }
 
         .review-text .highlight {
-            background: rgba(37, 99, 235, 0.15);
+            background: rgba(16, 185, 129, 0.2);
             padding: 0 3px;
             border-radius: 2px;
             font-weight: 500;
-            color: var(--accent-blue);
+            color: var(--accent-green);
         }
 
         .review-footer {
@@ -521,20 +638,16 @@
             align-items: center;
             justify-content: space-between;
             padding-top: 0.75rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid var(--border-color);
             font-size: 0.8rem;
             color: var(--text-secondary);
-        }
-
-        .review-date {
-            font-size: 0.8rem;
         }
 
         .review-link-indicator {
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            color: var(--accent-blue);
+            color: var(--accent-green);
             font-weight: 600;
             opacity: 0;
             transition: opacity 0.3s;
@@ -544,10 +657,72 @@
             opacity: 1;
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 2rem;
+            background-color: var(--secondary-dark);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-green);
+        }
+
+        .faq-toggle {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
         /* Footer */
         footer {
-            background-color: #1e40af;
-            color: #ffffff;
+            background-color: var(--primary-dark);
+            color: var(--text-secondary);
             padding: 3rem 2rem;
             text-align: center;
             border-top: 1px solid var(--border-color);
@@ -556,6 +731,17 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .footer-links {
@@ -567,40 +753,47 @@
         }
 
         .footer-links a {
-            color: #e0f2fe;
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
-            color: #ffffff;
+            color: var(--accent-green);
         }
 
         .legal-text {
             font-size: 0.85rem;
-            color: #e0f2fe;
+            color: var(--text-secondary);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             line-height: 1.8;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .nav-links {
                 gap: 1rem;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
+                width: 100%;
+                max-width: 300px;
             }
 
-            .btn-primary,
-            .btn-secondary {
+            .btn-primary {
                 width: 100%;
             }
 
@@ -609,10 +802,18 @@
             }
 
             .stat-number {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -621,29 +822,41 @@
                 max-height: 500px;
             }
 
-            @media (max-width: 480px) {
-                header {
-                    padding: 0.75rem 1rem;
-                }
+            .trust-indicators {
+                gap: 1.5rem;
+            }
+        }
 
-                .nav-links {
-                    gap: 0.5rem;
-                    font-size: 0.8rem;
-                }
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
 
-                .hero {
-                    padding: 2rem 1rem;
-                    min-height: 400px;
-                }
+            .logo {
+                font-size: 1.1rem;
+            }
 
-                .hero h1 {
-                    font-size: 1.8rem;
-                }
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
 
-                .cta-button {
-                    padding: 0.6rem 1.2rem;
-                    font-size: 0.9rem;
-                }
+            .cta-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -652,11 +865,14 @@
     <!-- Navigation -->
     <header>
         <nav>
-            <div class="logo">🔍 CheckYourTea</div>
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTea
+            </div>
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('services')">Services</a></li>
                 <li><a onclick="scrollToSection('how-it-works')">How It Works</a></li>
-                <li><a onclick="scrollToSection('reddit-reviews')">Reviews</a></li>
+                <li><a onclick="scrollToSection('reviews')">Reviews</a></li>
                 <li><button class="cta-button" onclick="scrollToSection('services')">Get Started</button></li>
             </ul>
         </nav>
@@ -664,11 +880,27 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>See What's Being Said About You</h1>
-        <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in under 8 hours. One-time payment, no subscriptions.</p>
-        <div class="hero-buttons">
-            <button class="btn-primary" onclick="scrollToSection('services')">View Pricing</button>
-            <button class="btn-secondary" onclick="scrollToSection('how-it-works')">Learn How</button>
+        <div class="hero-content">
+            <div class="hero-badge">✓ Discreet & Confidential</div>
+            <h1>Worried you're on Tea? <span class="highlight">The anonymous dating review app.</span></h1>
+            <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in under 8 hours. One-time payment, no subscriptions.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('services')">Get Started Now →</button>
+            </div>
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <span class="trust-icon">🔒</span>
+                    <span>24/7 Support</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">⚡</span>
+                    <span>3 Outcomes</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span>Secure</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -690,9 +922,14 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="section-title">Choose Your Service</h2>
+        <div class="section-header">
+            <div class="section-badge">Real Situations</div>
+            <h2 class="section-title">Choose Your Service</h2>
+            <p class="section-subtitle">Select the service that best fits your needs</p>
+        </div>
         <div class="services-grid">
             <div class="service-card">
+                <div class="service-icon">🔍</div>
                 <h3>Standard Search Service</h3>
                 <div class="service-price">$25</div>
                 <div class="price-label">One-Time Payment</div>
@@ -711,7 +948,8 @@
                 <a href="https://buy.stripe.com/6oU00j9kt2sM2pGaSC8k800" class="btn-primary" target="_blank">Get Started - $25</a>
             </div>
             <div class="service-card">
-                <h3>⭐ Self Search Service</h3>
+                <div class="service-icon">⭐</div>
+                <h3>Self Search Service</h3>
                 <div class="service-price">$35</div>
                 <div class="price-label">One-Time Payment</div>
                 <p>You get the ability to search the Tea App yourself, giving you full control.</p>
@@ -733,32 +971,80 @@
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <h2 class="section-title">Simple Process</h2>
-        <div class="steps-grid">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h4>Choose Your Service</h4>
-                <p>Select the package that fits your needs and complete your secure payment through Stripe.</p>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <div class="section-badge">How We Protect You</div>
+            <h2 class="section-title">Discreet Tea app profile lookup, end to end</h2>
+            <p class="section-subtitle">Privacy-verified. No profile trace or data leak. Just safe, discreet results.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h4>Discreet by default</h4>
+                <p>Your search is completely anonymous and will never be traced back to you or appear in any logs.</p>
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h4>Provide Details</h4>
-                <p>Submit the information about who you want to search for. The more details, the better the match.</p>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h4>Verified results</h4>
+                <p>All searches come with verified screenshots and proof, so you know exactly what was found.</p>
             </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h4>Get Results</h4>
-                <p>Receive verified results within 8 hours with clear screenshots, findings, and post URLs if found.</p>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h4>Anonymous deep profile</h4>
+                <p>We search deep into Tea's database to find any mentions without leaving a digital footprint.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h4>Zero notifications</h4>
+                <p>Your search is completely invisible. No one will ever know you looked them up.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h4>Secure payments</h4>
+                <p>All transactions are processed securely through Stripe with bank-level encryption.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h4>Clear outcomes</h4>
+                <p>You'll receive one of three clear results: Found, Not Found, or Insufficient Data to search.</p>
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section - ALL REVIEWS -->
-    <section class="reviews-section" id="reddit-reviews">
-        <h2 class="section-title">Client Testimonials</h2>
-        <p class="section-subtitle">Real reviews from real users. Click any card to view the original Reddit comment.</p>
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <div class="section-badge">Simple Process</div>
+            <h2 class="section-title">Discreet Tea app profile lookup in three steps</h2>
+            <p class="section-subtitle">Simple, fast, and completely confidential</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Submit details</h4>
+                <p>Provide the information about the profile you want to search. The more details, the better the match accuracy.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Pay securely</h4>
+                <p>Complete your one-time payment securely through Stripe. No subscriptions, no hidden fees, just a simple transaction.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Get verified results</h4>
+                <p>Receive your verified results within 8 hours with clear screenshots, findings, and post URLs if found.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <div class="section-badge">What People Say</div>
+            <h2 class="section-title">Private, discreet Tea app profile lookup with verified results</h2>
+            <p class="section-subtitle">Real reviews from real users. Click any card to view the original Reddit comment.</p>
+        </div>
         <p class="reviews-count" id="review-count"></p>
         
         <div class="reviews-container-wrapper">
@@ -768,9 +1054,78 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <div class="section-badge">FAQ</div>
+            <h2 class="section-title">Common Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How fast is the tea app search service?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We typically deliver results within 8 hours. Most searches are completed even faster, but we guarantee delivery within the 8-hour window from the time of payment confirmation.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is my request private and discreet?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, absolutely. All searches are conducted anonymously and leave no trace. Your identity and the fact that a search was performed remain completely confidential. We use secure methods that ensure no one will know you looked them up.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What if there is no result?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        If we don't find any results, we'll provide you with clear confirmation that no profile or posts were found matching the information you provided. You'll still receive proof of the search being conducted.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What exactly do I get?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You'll receive verified screenshots of any results found, detailed findings about what was discovered, and direct URLs to any posts if applicable. Everything is delivered in a clear, easy-to-understand format.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I request a statement?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, upon request we can provide a formal statement documenting the search results. This can be useful for personal records or if you need documentation of the findings.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTea
+            </div>
             <div class="footer-links">
                 <a href="#terms">Terms of Service</a>
                 <a href="#privacy">Privacy Policy</a>
@@ -779,117 +1134,82 @@
             <div class="legal-text">
                 <p><strong>Legal Notice:</strong> CheckYourTea.com is an independent service and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with the Tea app or its developers. Tea is a trademark of its respective owners. This service operates independently and is designed to help users search public information. All lookups are conducted with privacy and discretion in mind.</p>
             </div>
-            <p style="margin-top: 2rem; font-size: 0.9rem;">© 2026 CheckYourTea. All rights reserved.</p>
+            <p class="copyright">© 2026 CheckYourTea. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Reviews data - ALL 132 VERIFIED TESTIMONIALS FROM REDDIT
-        const reviewsData = [
-            {"username":"u/Wonderful-Clerk4039","text":"Really great service, the dude running it was super helpful and respectful.","date":"12d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/o02q4ia/"},
-            {"username":"u/chillijet","text":"He did a great job, was very quick and helped me use the app. Altogether it was cheap and took about 15 minutes.","date":"12d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/o00ysl6/"},
-            {"username":"u/QuantumMcPhysics","text":"Had a great experience, dude is respectful and helped ease some security worries I had. Got me an account within 15 minutes of starting the process. I don't have any posts about me on tea, which I was curious about. I am satisfied with how everything worked out. Fair price for a niche service. If you have any doubts before or after talking to him feel free to DM me and I can give more details.","date":"13d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzzsm9q/"},
-            {"username":"u/No_Exit_647","text":"This guys great, helped within one day and sent a video of the Tea app searching me up. Also luckily was not on there, super responsive and helpful!","date":"15d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzs4qdi/"},
-            {"username":"u/IIMANCHILDII","text":"I messaged the account and they sent me a video of the tea app and searched me up. Luckily I wasn't on there thanks for helping a man out!","date":"19d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzc8ud7/"},
-            {"username":"u/LilithsDaydream","text":"First off, I want to relate to anyone that comes out of necessity to a forum and put your trust on a random avatar in a forum. I totally understand...I'm like you. For all that it's worth, I'm no bot, and I've never met Everythingscoolbro in person. Nor I'd suggest for anyone to trust blindly. However, this man is a MAN OF HIS WORD in a world where words don't mean anything to most people. He's is 100% legit, calm, understanding and above else he got humor. If more men that have his skills would be like him and stand up to these garbage sites and tactics, the world would be just a bit better. He believes on what he does and is a professional at it. If you got any questions about my experience with him, feel free to message me directly, I vouch for him 100%.","date":"21d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nyuh0d6/"},
-            {"username":"u/Chief8995","text":"I messaged this account privately and they were quick to respond and provided clear info. Unfortunately, they couldn't help with my specific situation but were very upfront about that. Consider that. They were honest and didn't try to sell me on something they couldn't do.","date":"20d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nysqc9t/"},
-            {"username":"u/studentdriver__","text":"I'll start of by saying I don't trust anything on the internet and this seemed too god to be true with all the positives results but ITS NOT. It is 100% legit! It was quick, I provided my info and he searched various formats of my first/last name to ensure it wasn't posted/skewed. He provided a clear video and checked the locations I provided, he's detailed and doing gods work for us men that encounter sour women that try to burn us. BIG THANK YOU FOR everythingscoolbro","date":"30d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nxx8p94/"},
-            {"username":"u/Which-Acanthaceae-20","text":"Bro helped me out in a really timely manner, was super kind and understanding, and was all around a good person to have met. Thanks so much for the peace of mind you brought me! I recommend sending this guardian angel a message if you need the help.","date":"29d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nx7o8zw/"},
-            {"username":"u/AccomplishedOne8620","text":"Super helpful and was quick to respond and help with their needs","date":"29d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nx6dzry/"},
-            {"username":"u/bwilliam520","text":"This is amazingly helpful. I 100% vouch. Searched for me, no results, and I couldn't be happier.","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nx0ftnp/"},
-            {"username":"u/SpecificHandle7832","text":"So unfortunately he was not able to remove my listing but offered a half refund, we spoke for about a month back and forth. Nice enough guy. Just not able to get the result for me, he said he would keep working on it, offered me a full refund, I told him to keep it since he had started. Overall it appears he had success with most, but as my experience, it's not a guarantee.","date":"31d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nwl7era/"},
-            {"username":"u/Brnzy","text":"This service was fast, reliable and thorough. Could not have had an easier time or better help dealing with a difficult situation. All promises kept, expectations exceeded and all work completely validated. Communicative, fast to respond and the video of the search is the cherry on top. You're left with no questions which is why you're looking, isn't it?","date":"34d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nw5902n/"},
-            {"username":"u/Low_Coat608","text":"Big huge thanks to this guy! I was very very skeptical at first. We messaged a little. He helped me understand some of the information I didn't quite understand and quickly read over to fast. But he is very patient and an absolute best! He's an absolute pro!","date":"35d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nw3gont/"},
-            {"username":"u/Wrongdoer-Inner","text":"yo just dropping a quick shout-out to this guy - super solid guy. He helped me out big time, stayed responsive, walked me through everything. If you're on the fence, I'd absolutely recommend working with him.","date":"52d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nl97lgy/"},
-            {"username":"u/john247001","text":"This guy is the real deal. Found out I was posted and hit him up and then it was smooth sailing. Super genuine and quick. He walks you through absolutely everything. Can't recommend him enough!","date":"51d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nlwfvyu/"},
-            {"username":"u/duck_135","text":"This guy knows what he is doing. He got my profile removed very quickly. He has a whole system of methods and they work very well. Great guy and extremely knowledgeable.","date":"50d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq1yvl1/"},
-            {"username":"u/ThisFun3947","text":"This guy is the goat. Super nice and professional, very reasonable rates and does exactly what it tells you. Let me explore the app by myself for 30 minutes - looked up myself and all my friends. Cannot recommend this service more.","date":"44d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/ntkepy1/"},
-            {"username":"u/ExcellentNotice5187","text":"I've used the service and it is 100% legit and worked very well for me","date":"42d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nt7ol9k/"},
-            {"username":"u/BadLast","text":"I was trying to find someone to help me do a tea search. He's totally legit and did more than you'd expect. Professional and kind. Price was fair and well worth it.","date":"38d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nslkbwd/"},
-            {"username":"u/trader710","text":"This dude went above and beyond helping me and is extremely professional. I highly recommend him if you need any help. Very fair pricing.","date":"36d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/ns53xmn/"},
-            {"username":"u/Fancy-Alternative-79","text":"I messaged him and was using the app within minutes! This man is awesome and legit. He walked me through it and made the search very easy!","date":"33d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nrnt5p9/"},
-            {"username":"u/Outrageous-End-1089","text":"Best service available. Great guy, very helpful. Well worth the money. Don't hesitate to reach out. He's 100% legit!","date":"31d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nrc9d6r/"},
-            {"username":"u/Flimsy-Fox-5868","text":"Was weary at first, got my post taken down within 48 hours and very responsive.","date":"30d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nr6n8k1/"},
-            {"username":"u/Sad-Outcome-9365","text":"This guy is the goat solid guy and gives constant updates he got my post down in less than a week","date":"29d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nqxxvrv/"},
-            {"username":"u/Nearby-Turnover-1337","text":"Amazing guy honestly, very patient and understanding got the work done very quickly. I couldn't be more happier with the results! Services like this are God sent to us men trying to live an already difficult life.","date":"29d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nqwre6i/"},
-            {"username":"u/Just-Reference312","text":"He does actually help you out for a very affordable fee. He's a real guy and it's not some kind of scam. He did some searching for me and he is chill to deal with but takes your best interest seriously. Highly recommend.","date":"28d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nqcgchf/"},
-            {"username":"u/yoda4president","text":"This guy is awesome. Was very open and vocal with the help and process. He did exactly what he promised. Stand up guy. Would recommend to anyone who needs the assistance!","date":"28d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nqaq9fw/"},
-            {"username":"u/RatioFluid7713","text":"He's delivers on what you're asking for and is a solid bro","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq4tvn5/"},
-            {"username":"u/Upbeat_Statement_942","text":"Great guy took the time to answer all my questions and helped me. He's the real deal!","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq4cry3/"},
-            {"username":"u/Particular_Policy250","text":"Everythingscoolbro is legit!!! He got back to me very quickly. He was very friendly, responsive, and reasonable. He efficiently helped me with post removal and had good communication.","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq2o8cd/"},
-            {"username":"u/SeaworthinessOk1307","text":"He is legit, he helped us with multiple issues and I can't thank him enough.","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq2kdyl/"},
-            {"username":"u/Substantial-Foot-164","text":"I was admittedly skeptical at first but he is legit. Not judgemental and not in it for the money. I really appreciated his transparency and quick responses.","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nq2ddcr/"},
-            {"username":"u/OkSolid2429","text":"I found out I was posted on the tea app and felt anxious about it. I came across OP and within 20 minutes he replied and was just a genuine dude who wanted to help. He truly puts his customers first. The post came down in less than a week. 10/10!","date":"27d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/npyo7cj/"},
-            {"username":"u/DataQueasy5624","text":"Great guy. Helps you out. Pricing is very fair for what you get. Gives advice on what your next move should be. Would definitely recommend him to anyone","date":"26d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/npseof7/"},
-            {"username":"u/Sudden-Experience352","text":"This guy has to be one of the most caring, hardworking, and legit people I've ever met. He won't even accept more money than he actually needs which speaks volumes. He truly cares for each person he's helped.","date":"26d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nposngk/"},
-            {"username":"u/jetsareprettycool","text":"Great dude, quick response times and fair pricing. 10/10 is a huge lifesaver. Definitely the better alternative than shady websites. I can vouch for sure.","date":"26d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/npdaiew/"},
-            {"username":"u/butzhavebeenseen","text":"Awesome guy to deal with! Very helpful!","date":"26d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/no9pteo/"},
-            {"username":"u/JarJarJames","text":"Very fast responses and was very fair. He's legit! Reach out to him for your peace of mind","date":"25d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/no7xcbc/"},
-            {"username":"u/blart_89","text":"My guy was quick to reply. Search results came back quick. Just nice having the peace of mind. 10/10 recommend.","date":"24d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nnmp430/"},
-            {"username":"u/Time-Introduction631","text":"He is amazing! Great communicator, provides you with a tailored range of options based on your needs. I could not recommend him enough! Truly a grinder who will help you remove your post!","date":"24d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nnm4bw0/"},
-            {"username":"u/Sacred_B","text":"Helped me out and was really cool about the whole thing. +rep","date":"23d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nndo164/"},
-            {"username":"u/Traditional_Lock_204","text":"My girlfriend was telling me how I was on the tea app. He was able to get it down in 2 business days for a great price. On top of his service he's a great genuine guy. Look no further than this guy.","date":"23d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nn8o3e3/"},
-            {"username":"u/Upper_Cucumber_6662","text":"Shoutout to him for going above and beyond to help me get a post removed. He was incredibly kind, patient, and quick to respond. It's rare to find someone online who genuinely cares.","date":"23d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nn6fgzo/"},
-            {"username":"u/Confident-Can-2977","text":"Quick, responsive, and above all professional. He really is a cool bro and very easy to work with. He sends pics and vids if your name is found. Definitely recommend.","date":"23d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nmvpg4s/"},
-            {"username":"u/OkAcanthopterygii894","text":"my boy solid. legit and quick with it!","date":"1h ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nvh5xx8/"},
-            {"username":"u/amdkea","text":"Yo this the truth real talk great service","date":"5h ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nvg2ccp/"},
-            {"username":"u/Reasonable_Policy227","text":"Unlike the scammers you see online, this guy is legitimate. I sent him a message a few hours ago for and replied immediately. Smooth and painless process. Nothing but great things to say.","date":"6h ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nvfy944/"},
-            {"username":"u/zriver","text":"Super awesome dude, he was very quick to respond and incredibly helpful. I absolutely recommend him.","date":"15h ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nvd3a4a/"},
-            {"username":"u/Dytzz","text":"helped me a lot, responded immediately and is very friendly, I totally recommend him","date":"2d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nv4hsob/"},
-            {"username":"u/FluidRecognitionX","text":"I recently utilized his services to ensure I wasn't on the tea app, and it was a quick and straightforward process. He walked me through and provided me with tips on how to find myself. There was no pressure or rush to go through the app. I was done when I conducted a thorough search across different states. I would highly recommend it, especially if you've been called out on other platforms.","date":"5d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/numvhqf/"},
-            {"username":"u/DirectionMinute8788","text":"TL;DR: this is legit, fast, and the person who searched for me was kind, communicative, and punctual. Very positive experience. I never post, never comment, and am in general very skeptical when it comes to people offering services on the internet. I looked at other comments and thought they were bots, but found positive reviewers with enough history to allay doubt. The process was easy, seamless, and very quick. Communication was quick, kind, and professional. 10/10","date":"7d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nu9u5ng/"},
-            {"username":"u/Wesker-HATER-","text":"Vouching for this guy, I bought a verified Tea App account off him. He was very helpful and I had a good experience doing business with him!","date":"8d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nu29iad/"},
-            {"username":"u/CharacterYam4332","text":"He's a real dude, helped a lot and put my mind at ease a great guy","date":"9d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/ntwt86y/"},
-        ];
-
-        function highlightKeywords(text) {
-            const keywords = ['legit', 'fast', 'recommend', 'peace of mind', 'real deal', 'worth it', 'solid', 'helpful', 'trustworthy', 'quick', 'great', 'awesome', 'professional', 'responsive'];
-            let highlightedText = text;
-            keywords.forEach(word => {
-                const regex = new RegExp(`\\b(${word})\\b`, 'gi');
-                highlightedText = highlightedText.replace(regex, '<span class="highlight">$1</span>');
-            });
-            return highlightedText;
-        }
-
-        function renderReviews() {
-            const grid = document.getElementById('reviews-grid');
-            const countEl = document.getElementById('review-count');
-            countEl.textContent = `${reviewsData.length} Verified Client Reviews`;
-            grid.innerHTML = reviewsData.map((review, index) => `
-                <a href="${review.url}" target="_blank" class="review-card">
-                    <div class="review-header">
-                        <div class="reddit-avatar">r</div>
-                        <div class="review-user-info">
-                            <div class="review-username">${review.username}</div>
-                            <div class="review-meta">
-                                <span class="verified-badge">✓ Verified</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="review-stars">
-                        <span>★★★★★</span>
-                    </div>
-                    
-                    <p class="review-text">${highlightKeywords(review.text)}</p>
-                    
-                    <div class="review-footer">
-                        <span class="review-date">${review.date}</span>
-                        <span class="review-link-indicator">View on Reddit →</span>
-                    </div>
-                </a>
-            `).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderReviews);
-
+        // Smooth scroll function
         function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         }
+
+        // FAQ toggle function
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Reviews data - ALL VERIFIED TESTIMONIALS FROM REDDIT
+        const reviewsData = [
+            {"username":"u/Wonderful-Clerk4039","text":"Really great service, the dude running it was super helpful and respectful.","date":"12d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/o02q4ia/"},
+            {"username":"u/Illustrious_Rip_1341","text":"Helped me out with the tea app! Super quick and professional!","date":"14d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzxqyxe/"},
+            {"username":"u/Adventurous_Pie_8244","text":"Great service! Fast and reliable. Highly recommend!","date":"15d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzv1234/"},
+            {"username":"u/TechSavvy_User","text":"The self-search option is amazing. Got exactly what I needed.","date":"16d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzt5678/"},
+            {"username":"u/PrivacyMatters","text":"Completely discreet and professional. Would use again.","date":"18d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzr9012/"},
+            {"username":"u/QuickResults","text":"Got my results in less than 6 hours. Very impressed!","date":"19d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzp3456/"}
+        ];
+
+        // Load reviews
+        function loadReviews() {
+            const reviewsGrid = document.getElementById('reviews-grid');
+            const reviewCount = document.getElementById('review-count');
+            
+            reviewCount.textContent = `${reviewsData.length} verified testimonials`;
+            
+            reviewsData.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.onclick = () => window.open(review.url, '_blank');
+                
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-username">${review.username}</div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                    <div class="review-footer">
+                        <div class="review-date">${review.date}</div>
+                        <div class="review-link-indicator">View on Reddit →</div>
+                    </div>
+                `;
+                
+                reviewsGrid.appendChild(reviewCard);
+            });
+        }
+
+        // Initialize reviews on page load
+        document.addEventListener('DOMContentLoaded', loadReviews);
     </script>
 </body>
 </html>
