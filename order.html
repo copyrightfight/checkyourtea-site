@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Service - CheckYourTea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root[data-theme="dark"] {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --accent-green: #10b981;
+            --accent-green-bright: #34d399;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border-color: #2a2a2a;
+            --input-bg: #2a2a2a;
+        }
+
+        :root[data-theme="light"] {
+            --primary-dark: #ffffff;
+            --secondary-dark: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-green: #10b981;
+            --accent-green-bright: #059669;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --input-bg: #f8fafc;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-dark);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent-green);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .order-container {
+            margin-top: 100px;
+            padding: 3rem 2rem 5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 100px);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Package Selection */
+        .package-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .package-option {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .package-option:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .package-option.active {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        .package-option.active::before {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .package-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-label .optional {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.85rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checkbox-option input[type="checkbox"],
+        .checkbox-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--accent-green);
+        }
+
+        .checkbox-option label {
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .requirement-notice {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .requirement-notice p {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .requirement-notice strong {
+            color: var(--accent-green);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent-green-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .order-container {
+                padding: 2rem 1rem 3rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .package-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTea
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="order-container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="page-header">
+            <div class="section-badge">Order Service</div>
+            <h1 class="page-title">Complete Your Order</h1>
+            <p class="page-subtitle">Select your package and fill out the required information</p>
+        </div>
+
+        <!-- Package Selection -->
+        <div class="package-selection">
+            <div class="package-option" id="standard-package" onclick="selectPackage('standard')">
+                <div class="package-icon">🔍</div>
+                <div class="package-name">Standard Search Service</div>
+                <div class="package-price">$25</div>
+                <p class="package-description">We perform the search for you</p>
+            </div>
+            <div class="package-option" id="self-package" onclick="selectPackage('self')">
+                <div class="package-icon">⭐</div>
+                <div class="package-name">Self Search Service</div>
+                <div class="package-price">$35</div>
+                <p class="package-description">Search yourself with our guidance</p>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <!-- Standard Search Form -->
+            <div class="form-section" id="standard-form">
+                <h2 class="form-title">Standard Search Service</h2>
+                <p class="form-subtitle">Please provide the information for the person you'd like us to search</p>
+
+                <form id="standard-search-form" onsubmit="submitStandardForm(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="std-first-name">First Name *</label>
+                        <input type="text" id="std-first-name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="std-last-name">Last Name *</label>
+                        <input type="text" id="std-last-name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="std-email">Your Email *</label>
+                        <input type="email" id="std-email" class="form-input" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="std-phone">Your Phone Number *</label>
+                        <input type="tel" id="std-phone" class="form-input" required placeholder="+1 (555) 000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="std-additional">
+                            Additional Information <span class="optional">(Optional)</span>
+                        </label>
+                        <textarea id="std-additional" class="form-textarea" placeholder="Include any additional details such as:&#10;- Social media handles&#10;- Nicknames&#10;- Phone numbers&#10;- Additional cities to search&#10;&#10;The more information you provide, the more accurate the search."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Proceed to Payment →</button>
+                </form>
+            </div>
+
+            <!-- Self Search Form -->
+            <div class="form-section" id="self-form">
+                <h2 class="form-title">Self Search Service</h2>
+                <p class="form-subtitle">We'll guide you through searching yourself</p>
+
+                <div class="requirement-notice">
+                    <p><strong>Important Requirement:</strong></p>
+                    <p>You must have a computer or Android device to use this service. iOS devices are not currently supported.</p>
+                </div>
+
+                <form id="self-search-form" onsubmit="submitSelfForm(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="self-first-name">First Name *</label>
+                        <input type="text" id="self-first-name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="self-last-name">Last Name *</label>
+                        <input type="text" id="self-last-name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="self-contact">Best Way to Reach You *</label>
+                        <input type="text" id="self-contact" class="form-input" required placeholder="Email, phone, or preferred contact method">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Device Confirmation *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="radio" id="has-device" name="device" value="yes" required>
+                                <label for="has-device">✓ I have a computer or Android device</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="radio" id="no-device" name="device" value="no">
+                                <label for="no-device">✗ I do not have a computer or Android device</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="self-submit-btn" disabled>Proceed to Payment →</button>
+                </form>
+            </div>
+
+            <!-- No Package Selected Message -->
+            <div class="form-section active" id="no-package">
+                <h2 class="form-title">Select a Package</h2>
+                <p class="form-subtitle">Please select either the Standard Search Service or Self Search Service above to continue</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            // Check for package parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageParam = urlParams.get('package');
+            if (packageParam) {
+                selectPackage(packageParam);
+            }
+        });
+
+        let selectedPackage = null;
+
+        function selectPackage(packageType) {
+            selectedPackage = packageType;
+
+            // Update package selection UI
+            document.getElementById('standard-package').classList.remove('active');
+            document.getElementById('self-package').classList.remove('active');
+            document.getElementById(packageType + '-package').classList.add('active');
+
+            // Show appropriate form
+            document.getElementById('no-package').classList.remove('active');
+            document.getElementById('standard-form').classList.remove('active');
+            document.getElementById('self-form').classList.remove('active');
+            document.getElementById(packageType + '-form').classList.add('active');
+
+            // Scroll to form
+            document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Enable/disable self search submit button based on device selection
+        document.querySelectorAll('input[name="device"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const submitBtn = document.getElementById('self-submit-btn');
+                if (this.value === 'yes') {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            });
+        });
+
+        function submitStandardForm(event) {
+            event.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                package: 'standard',
+                firstName: document.getElementById('std-first-name').value,
+                lastName: document.getElementById('std-last-name').value,
+                email: document.getElementById('std-email').value,
+                phone: document.getElementById('std-phone').value,
+                additional: document.getElementById('std-additional').value
+            };
+
+            // Store in localStorage for later retrieval
+            localStorage.setItem('orderData', JSON.stringify(formData));
+
+            // Redirect to Stripe payment
+            window.location.href = 'https://buy.stripe.com/6oU00j9kt2sM2pGaSC8k800';
+        }
+
+        function submitSelfForm(event) {
+            event.preventDefault();
+            
+            const deviceCheck = document.querySelector('input[name="device"]:checked');
+            if (!deviceCheck || deviceCheck.value !== 'yes') {
+                alert('You must have a computer or Android device to use this service.');
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                package: 'self',
+                firstName: document.getElementById('self-first-name').value,
+                lastName: document.getElementById('self-last-name').value,
+                contact: document.getElementById('self-contact').value,
+                hasDevice: true
+            };
+
+            // Store in localStorage for later retrieval
+            localStorage.setItem('orderData', JSON.stringify(formData));
+
+            // Redirect to Stripe payment
+            window.location.href = 'https://buy.stripe.com/00waEX68h4AU4xO1i28k801';
+        }
+    </script>
+</body>
+</html>

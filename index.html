@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
 
-        :root {
+        :root[data-theme="dark"] {
             --primary-dark: #0a0a0a;
             --secondary-dark: #1a1a1a;
             --card-bg: #1e1e1e;
@@ -22,11 +22,23 @@
             --border-color: #2a2a2a;
         }
 
+        :root[data-theme="light"] {
+            --primary-dark: #ffffff;
+            --secondary-dark: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-green: #10b981;
+            --accent-green-bright: #059669;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--primary-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Navigation */
@@ -34,11 +46,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(10, 10, 10, 0.95);
+            background-color: var(--primary-dark);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             padding: 1rem 2rem;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         nav {
@@ -90,7 +103,7 @@
 
         .cta-button {
             background-color: var(--accent-green);
-            color: var(--primary-dark);
+            color: white;
             padding: 0.65rem 1.3rem;
             border-radius: 6px;
             text-decoration: none;
@@ -118,6 +131,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            transition: background-color 0.3s;
         }
 
         .hero::before {
@@ -149,15 +163,35 @@
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+        /* Escalating Title Styles */
+        .hero-title {
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
-        .hero h1 .highlight {
+        .title-line {
+            display: block;
+            margin: 0.3rem 0;
+        }
+
+        .title-small {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .title-medium {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .title-large {
+            font-size: 4rem;
+            font-weight: 800;
             color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: -1px;
         }
 
         .hero .subtitle {
@@ -180,7 +214,7 @@
 
         .btn-primary {
             background-color: var(--accent-green);
-            color: var(--primary-dark);
+            color: white;
             padding: 1rem 2.5rem;
             border-radius: 8px;
             text-decoration: none;
@@ -227,6 +261,7 @@
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .stat-item {
@@ -263,6 +298,7 @@
             background-color: var(--secondary-dark);
             max-width: 1200px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .section-header {
@@ -422,6 +458,7 @@
             background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .features-grid {
@@ -474,6 +511,7 @@
             background-color: var(--secondary-dark);
             max-width: 1200px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .steps-grid {
@@ -515,7 +553,7 @@
             width: 60px;
             height: 60px;
             background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
-            color: var(--primary-dark);
+            color: white;
             border-radius: 50%;
             line-height: 60px;
             font-weight: 700;
@@ -541,6 +579,7 @@
             background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .reviews-count {
@@ -663,6 +702,7 @@
             background-color: var(--secondary-dark);
             max-width: 900px;
             margin: 0 auto;
+            transition: background-color 0.3s;
         }
 
         .faq-item {
@@ -723,9 +763,10 @@
         footer {
             background-color: var(--primary-dark);
             color: var(--text-secondary);
-            padding: 3rem 2rem;
+            padding: 3rem 2rem 2rem;
             text-align: center;
             border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .footer-content {
@@ -771,6 +812,39 @@
             line-height: 1.8;
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            width: fit-content;
+        }
+
+        .theme-option {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .theme-option.active {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
+        .theme-option:hover:not(.active) {
+            background-color: var(--border-color);
+        }
+
         .copyright {
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -778,8 +852,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .title-small {
+                font-size: 1.4rem;
+            }
+
+            .title-medium {
+                font-size: 2.2rem;
+            }
+
+            .title-large {
+                font-size: 3rem;
             }
 
             .nav-links {
@@ -851,8 +933,16 @@
                 min-height: 500px;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .title-small {
+                font-size: 1.2rem;
+            }
+
+            .title-medium {
+                font-size: 1.8rem;
+            }
+
+            .title-large {
+                font-size: 2.5rem;
             }
 
             .hero .subtitle {
@@ -882,10 +972,14 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">✓ Discreet & Confidential</div>
-            <h1>Worried you're on Tea? <span class="highlight">The anonymous dating review app.</span></h1>
-            <p class="subtitle">Check whether your profile appears on Tea anonymously. Fast, discreet, verified results in under 8 hours. One-time payment, no subscriptions.</p>
+            <h1 class="hero-title">
+                <span class="title-line title-small">Am I posted on Tea?</span>
+                <span class="title-line title-medium">She said I was posted!</span>
+                <span class="title-line title-large">Worried you're posted on the Tea App?</span>
+            </h1>
+            <p class="subtitle">A discreet, professional service to help you check whether your profile appears on Tea anonymously. Fast, verified results in under 8 hours.</p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="scrollToSection('services')">Get Started Now →</button>
+                <a href="order.html" class="btn-primary">Get Started Now →</a>
             </div>
             <div class="trust-indicators">
                 <div class="trust-item">
@@ -945,7 +1039,7 @@
                 </ul>
                 <p class="best-for">Best For</p>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
-                <a href="https://buy.stripe.com/6oU00j9kt2sM2pGaSC8k800" class="btn-primary" target="_blank">Get Started - $25</a>
+                <a href="order.html?package=standard" class="btn-primary">Get Started - $25</a>
             </div>
             <div class="service-card">
                 <div class="service-icon">⭐</div>
@@ -966,7 +1060,7 @@
                 </ul>
                 <p class="best-for">Best For</p>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
-                <a href="https://buy.stripe.com/00waEX68h4AU4xO1i28k801" class="btn-primary" target="_blank">Get Started - $35</a>
+                <a href="order.html?package=self" class="btn-primary">Get Started - $35</a>
             </div>
         </div>
     </section>
@@ -1022,17 +1116,17 @@
         <div class="steps-grid">
             <div class="step">
                 <div class="step-number">1</div>
-                <h4>Submit details</h4>
-                <p>Provide the information about the profile you want to search. The more details, the better the match accuracy.</p>
+                <h4>Choose Your Service</h4>
+                <p>Select the package that fits your needs and fill out the required information form.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h4>Pay securely</h4>
-                <p>Complete your one-time payment securely through Stripe. No subscriptions, no hidden fees, just a simple transaction.</p>
+                <h4>Complete Payment</h4>
+                <p>Securely pay through Stripe. No subscriptions, no hidden fees, just a simple one-time transaction.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h4>Get verified results</h4>
+                <h4>Get Verified Results</h4>
                 <p>Receive your verified results within 8 hours with clear screenshots, findings, and post URLs if found.</p>
             </div>
         </div>
@@ -1134,11 +1228,36 @@
             <div class="legal-text">
                 <p><strong>Legal Notice:</strong> CheckYourTea.com is an independent service and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with the Tea app or its developers. Tea is a trademark of its respective owners. This service operates independently and is designed to help users search public information. All lookups are conducted with privacy and discretion in mind.</p>
             </div>
+            
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <div class="theme-option active" onclick="setTheme('dark')" id="dark-theme">Dark</div>
+                <div class="theme-option" onclick="setTheme('light')" id="light-theme">Light</div>
+            </div>
+            
             <p class="copyright">© 2026 CheckYourTea. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Theme Toggle Function
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update active state
+            document.getElementById('dark-theme').classList.remove('active');
+            document.getElementById('light-theme').classList.remove('active');
+            document.getElementById(theme + '-theme').classList.add('active');
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+            loadReviews();
+        });
+
         // Smooth scroll function
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
@@ -1170,7 +1289,7 @@
             }
         }
 
-        // Reviews data - ALL VERIFIED TESTIMONIALS FROM REDDIT
+        // Reviews data
         const reviewsData = [
             {"username":"u/Wonderful-Clerk4039","text":"Really great service, the dude running it was super helpful and respectful.","date":"12d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/o02q4ia/"},
             {"username":"u/Illustrious_Rip_1341","text":"Helped me out with the tea app! Super quick and professional!","date":"14d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzxqyxe/"},
@@ -1207,9 +1326,6 @@
                 reviewsGrid.appendChild(reviewCard);
             });
         }
-
-        // Initialize reviews on page load
-        document.addEventListener('DOMContentLoaded', loadReviews);
     </script>
 </body>
 </html>
