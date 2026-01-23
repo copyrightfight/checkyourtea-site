@@ -92,6 +92,19 @@
             }
         }
 
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.4),
+                            0 0 40px rgba(16, 185, 129, 0.2),
+                            0 0 60px rgba(16, 185, 129, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
+                            0 0 60px rgba(16, 185, 129, 0.3),
+                            0 0 90px rgba(16, 185, 129, 0.2);
+            }
+        }
+
         /* Navigation */
         header {
             position: fixed;
@@ -236,19 +249,18 @@
         /* Escalating Title Styles */
         .hero-title {
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            font-weight: 900;
-            text-transform: uppercase;
+            line-height: 1.3;
+            font-weight: 700;
             color: var(--text-primary);
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.2);
+            font-size: 2.2rem;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.7;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .hero-buttons {
@@ -277,25 +289,6 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(16, 185, 129, 0.6);
-        }
-
-        .trust-notice {
-            margin-top: 1.5rem;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            border: 2px solid rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .trust-notice p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .trust-notice .highlight {
-            color: var(--accent-green);
-            font-weight: 800;
         }
 
         /* Thought Bubble Illustration */
@@ -332,76 +325,115 @@
 
         .thought-bubble:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 12px rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.25);
         }
 
         .thought-bubble p {
-            font-size: 0.9rem;
-            font-weight: 700;
-            font-style: italic;
             color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.4;
         }
 
-        .thought-1 { animation: float1 4s ease-in-out infinite; top: 8%; left: 10%; }
-        .thought-2 { animation: float2 5s ease-in-out infinite 0.5s; top: 22%; right: 5%; }
-        .thought-3 { animation: float3 4.5s ease-in-out infinite 1s; top: 42%; left: 5%; }
-        .thought-4 { animation: float4 5.5s ease-in-out infinite 0.3s; top: 55%; right: 8%; }
-        .thought-5 { animation: float5 4.8s ease-in-out infinite 0.8s; bottom: 15%; left: 20%; }
-        .thought-6 { animation: float2 4.3s ease-in-out infinite 1.2s; top: 68%; right: 18%; }
-        .thought-7 { animation: float3 5.2s ease-in-out infinite 0.4s; top: 15%; left: 38%; }
-        .thought-8 { animation: float4 4.7s ease-in-out infinite 0.7s; top: 35%; right: 28%; }
+        /* Thought Bubble Positions */
+        .thought-1 { top: 5%; left: 10%; animation: float1 6s ease-in-out infinite; }
+        .thought-2 { top: 15%; right: 8%; animation: float2 7s ease-in-out infinite; }
+        .thought-3 { top: 35%; left: 5%; animation: float3 5.5s ease-in-out infinite; }
+        .thought-4 { top: 45%; right: 12%; animation: float4 6.5s ease-in-out infinite; }
+        .thought-5 { top: 65%; left: 8%; animation: float5 7s ease-in-out infinite; }
+        .thought-6 { top: 75%; right: 10%; animation: float1 6s ease-in-out infinite; }
+        .thought-7 { top: 25%; left: 35%; animation: float2 5s ease-in-out infinite; }
+        .thought-8 { top: 55%; right: 35%; animation: float3 6s ease-in-out infinite; }
 
         .central-figure {
             position: absolute;
-            bottom: 5%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
+            z-index: 1;
         }
 
-        /* Stats Section */
+        /* Stats Section - Compact with Glow */
         .stats {
-            padding: 4rem 2rem;
-            background-color: var(--primary-dark);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2.5rem 2rem;
+            background-color: var(--secondary-dark);
+            flex-wrap: wrap;
             transition: background-color 0.3s;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 1.5rem 2rem;
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            border: 2px solid var(--accent-green);
+            min-width: 180px;
             transition: all 0.3s;
+            position: relative;
+            animation: glow 3s ease-in-out infinite;
         }
 
         .stat-item:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent-green);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
         .stat-label {
-            font-size: 0.95rem;
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        /* Services Section */
+        /* Relationship Section */
+        .relationship-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            text-align: center;
+            border-top: 2px solid var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        .relationship-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .relationship-content h3 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .relationship-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Services Section - Compact */
         .services {
-            padding: 5rem 2rem;
-            background-color: var(--secondary-dark);
+            padding: 3rem 2rem;
+            background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
             transition: background-color 0.3s;
@@ -409,67 +441,52 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .section-badge {
             display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
+            background-color: rgba(16, 185, 129, 0.2);
             color: var(--accent-green);
-            padding: 0.4rem 0.9rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 2px solid var(--accent-green);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-weight: 800;
         }
 
         .section-subtitle {
-            text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+            margin-top: 2rem;
         }
 
         .service-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-bright));
-            opacity: 0;
-            transition: opacity 0.3s;
         }
 
         .service-card:hover {
@@ -478,46 +495,36 @@
             box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
         }
 
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
         .service-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(16, 185, 129, 0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--text-primary);
+            font-weight: 700;
         }
 
         .service-price {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent-green);
             margin-bottom: 0.3rem;
         }
 
         .price-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .service-card p {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         .service-card .best-for {
@@ -525,29 +532,29 @@
             color: var(--text-primary);
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .features-list {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             flex-grow: 1;
         }
 
         .features-list li {
             color: var(--text-secondary);
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.9rem;
+            gap: 0.6rem;
+            font-size: 0.85rem;
         }
 
         .features-list li:before {
             content: "✓";
             color: var(--accent-green);
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
@@ -556,11 +563,13 @@
             text-align: center;
             display: block;
             margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 1rem;
         }
 
-        /* Features Grid Section */
+        /* Features Grid Section - Compact */
         .features-section {
-            padding: 5rem 2rem;
+            padding: 3rem 2rem;
             background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
@@ -569,14 +578,14 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .feature-card {
             background-color: var(--card-bg);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             transition: all 0.3s;
@@ -588,32 +597,32 @@
         }
 
         .feature-icon {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(16, 185, 129, 0.15);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
         }
 
         .feature-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
             color: var(--text-primary);
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
-        /* How It Works Section */
+        /* How It Works Section - Compact */
         .how-it-works {
-            padding: 5rem 2rem;
+            padding: 3rem 2rem;
             background-color: var(--secondary-dark);
             max-width: 1200px;
             margin: 0 auto;
@@ -622,14 +631,14 @@
 
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .step {
             background-color: var(--card-bg);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             text-align: center;
@@ -656,32 +665,32 @@
 
         .step-number {
             display: inline-block;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
             color: white;
             border-radius: 50%;
-            line-height: 60px;
+            line-height: 50px;
             font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
         .step h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
             color: var(--text-primary);
         }
 
         .step p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
-        /* Reviews Section */
+        /* Reviews Section - Compact */
         .reviews-section {
-            padding: 5rem 2rem;
+            padding: 3rem 2rem;
             background-color: var(--primary-dark);
             max-width: 1200px;
             margin: 0 auto;
@@ -692,8 +701,8 @@
             text-align: center;
             color: var(--accent-green);
             font-weight: 600;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         .reviews-container-wrapper {
@@ -702,9 +711,9 @@
 
         .reviews-scroll-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-height: 600px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            max-height: 500px;
             overflow-y: auto;
             padding: 1rem;
             scrollbar-width: thin;
@@ -729,12 +738,12 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 1.5rem;
+            padding: 1.2rem;
             transition: all 0.3s;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .review-card:hover {
@@ -752,18 +761,18 @@
         .review-username {
             font-weight: 600;
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .review-stars {
             color: #fbbf24;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .review-text {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
@@ -774,9 +783,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 0.75rem;
+            padding-top: 0.6rem;
             border-top: 1px solid var(--border-color);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
         }
 
@@ -794,9 +803,9 @@
             opacity: 1;
         }
 
-        /* FAQ Section */
+        /* FAQ Section - Compact */
         .faq-section {
-            padding: 5rem 2rem;
+            padding: 3rem 2rem;
             background-color: var(--secondary-dark);
             max-width: 900px;
             margin: 0 auto;
@@ -807,7 +816,7 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             overflow: hidden;
             transition: all 0.3s;
         }
@@ -817,7 +826,7 @@
         }
 
         .faq-question {
-            padding: 1.5rem;
+            padding: 1.2rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -825,6 +834,7 @@
             font-weight: 600;
             color: var(--text-primary);
             user-select: none;
+            font-size: 0.95rem;
         }
 
         .faq-question:hover {
@@ -848,20 +858,21 @@
         }
 
         .faq-answer-content {
-            padding: 0 1.5rem 1.5rem;
+            padding: 0 1.2rem 1.2rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         .faq-item.active .faq-answer {
             max-height: 500px;
         }
 
-        /* Footer */
+        /* Footer - Compact */
         footer {
             background-color: var(--primary-dark);
             color: var(--text-secondary);
-            padding: 3rem 2rem 2rem;
+            padding: 2.5rem 2rem 1.5rem;
             text-align: center;
             border-top: 1px solid var(--border-color);
             transition: background-color 0.3s, border-color 0.3s;
@@ -873,22 +884,22 @@
         }
 
         .footer-logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
         }
 
         .footer-links a {
@@ -903,53 +914,54 @@
         }
 
         .legal-text {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
+            margin: 1.5rem 0;
+            padding: 1.2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
-        /* Theme Toggle */
+        .legal-text p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
         .theme-toggle {
             display: flex;
-            align-items: center;
             justify-content: center;
             gap: 1rem;
-            margin: 2rem auto 1rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            width: fit-content;
+            margin: 1.5rem 0;
         }
 
         .theme-option {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .theme-option:hover {
+            border-color: var(--accent-green);
         }
 
         .theme-option.active {
             background-color: var(--accent-green);
             color: white;
-        }
-
-        .theme-option:hover:not(.active) {
-            background-color: var(--border-color);
+            border-color: var(--accent-green);
         }
 
         .copyright {
-            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
+        /* Responsive Design */
+        @media (max-width: 968px) {
             .hero-container {
                 flex-direction: column;
                 gap: 2rem;
@@ -959,44 +971,60 @@
                 max-width: 500px;
                 min-height: 400px;
             }
-        }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn-primary {
-                width: 100%;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .stats {
+                gap: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .hero-illustration {
-                min-height: 350px;
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+                min-height: 600px;
             }
 
-            .thought-bubble {
-                padding: 0.5rem 0.75rem;
+            .hero-title {
+                font-size: 1.8rem;
             }
 
-            .thought-bubble p {
-                font-size: 0.8rem;
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn-primary {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .stats {
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 150px;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
             }
         }
 
@@ -1024,7 +1052,11 @@
             }
 
             .hero-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 130px;
             }
         }
     </style>
@@ -1055,13 +1087,10 @@
                     <span class="pulse-dot"></span>
                     ⚠️ THEY'RE TALKING ABOUT YOU
                 </div>
-                <h1 class="hero-title">You're ALREADY Posted.<br>Don't You Want to Know?</h1>
-                <p class="hero-subtitle">Everyone at school has seen it. Your friends. Your crush. Even your family might know by now.</p>
+                <h1 class="hero-title">Worried or curious if you are posted on the Tea App?</h1>
+                <p class="hero-subtitle">Finding out is as simple and easy when you put your trust in us</p>
                 <div class="hero-buttons">
-                    <a href="order.html" class="btn-primary">🚨 SEE WHAT THEY SAID 🚨</a>
-                </div>
-                <div class="trust-notice">
-                    <p>⏰ <span class="highlight">2,847 people</span> checked in the last hour</p>
+                    <a href="order.html" class="btn-primary">🚨 FIND OUT NOW 🚨</a>
                 </div>
             </div>
 
@@ -1078,30 +1107,30 @@
                     </defs>
                 </svg>
 
-                <!-- Thought Bubbles (8 total) -->
+                <!-- Thought Bubbles (8 total) - Intense Tea App Specific -->
                 <div class="thought-bubble thought-1">
-                    <p>"They're all laughing at me..."</p>
+                    <p>"What if I'm posted…<br>and everyone already knows?"</p>
                 </div>
                 <div class="thought-bubble thought-2">
-                    <p>"I saw them screenshot it<br>and share it everywhere"</p>
+                    <p>"Did she really post me…<br>and just didn't tell me?"</p>
                 </div>
                 <div class="thought-bubble thought-3">
-                    <p>"My life is OVER"</p>
+                    <p>"I swear I heard them<br>say my name… and 'posted.'"</p>
                 </div>
                 <div class="thought-bubble thought-4">
-                    <p>"Everyone in my class<br>knows what I did"</p>
+                    <p>"Is that why she ghosted me…<br>because she saw something<br>on Tea?"</p>
                 </div>
                 <div class="thought-bubble thought-5">
-                    <p>"The whole school is<br>talking about this"</p>
+                    <p>"Were they whispering about<br>my Tea App post behind<br>my back?"</p>
                 </div>
                 <div class="thought-bubble thought-6">
-                    <p>"They're texting about me<br>right now..."</p>
+                    <p>"Did my ex post our<br>screenshots… on Tea?"</p>
                 </div>
                 <div class="thought-bubble thought-7">
-                    <p>"What if my parents see?!"</p>
+                    <p>"What if my crush saw<br>what they said about me<br>on Tea?"</p>
                 </div>
                 <div class="thought-bubble thought-8">
-                    <p>"I can't go back there..."</p>
+                    <p>"Are people laughing at<br>my Tea post right now?"</p>
                 </div>
 
                 <!-- Central Figure Silhouette -->
@@ -1125,19 +1154,30 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats Section with Icons and Glow -->
     <section class="stats">
         <div class="stat-item">
+            <span class="stat-icon">👥</span>
             <div class="stat-number">400+</div>
             <div class="stat-label">Profiles Searched</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">&lt;8hrs</div>
+            <span class="stat-icon">⚡</span>
+            <div class="stat-number">&lt;6hrs</div>
             <div class="stat-label">Fast Turnaround</div>
         </div>
         <div class="stat-item">
+            <span class="stat-icon">🔒</span>
             <div class="stat-number">100%</div>
             <div class="stat-label">Discreet & Private</div>
+        </div>
+    </section>
+
+    <!-- Relationship Section -->
+    <section class="relationship-section">
+        <div class="relationship-content">
+            <h3>Pay once and never again.</h3>
+            <p>We offer all future searches for free because with us, it's a relationship. Think of us as the friend you've always needed!</p>
         </div>
     </section>
 
@@ -1160,12 +1200,12 @@
                     <li>Full Tea App search performed on your behalf</li>
                     <li>Screenshots and proof of any results</li>
                     <li>Priority support</li>
-                    <li>Fast turnaround (under 8 hours)</li>
+                    <li>Fast turnaround (under 6 hours)</li>
                     <li>Post URL included if found</li>
                     <li>Free future searches after your first initial payment</li>
                 </ul>
                 <p class="best-for">Best For</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
                 <a href="order.html?package=standard" class="btn-primary">Get Started - $25</a>
             </div>
             <div class="service-card">
@@ -1175,18 +1215,18 @@
                 <div class="price-label">One-Time Payment</div>
                 <p>You get the ability to search the Tea App yourself, giving you full control.</p>
                 <p class="best-for">Requirements</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">A computer (Mac or Windows)</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">A computer (Mac or Windows)</p>
                 <p class="best-for">What's Included</p>
                 <ul class="features-list">
                     <li>Access to perform your own Tea App search</li>
                     <li>Screenshots and proof of any results</li>
                     <li>Priority support</li>
-                    <li>Fast turnaround (under 8 hours)</li>
+                    <li>Fast turnaround (under 6 hours)</li>
                     <li>Post URL included if found</li>
                     <li>Free future searches after your first initial payment</li>
                 </ul>
                 <p class="best-for">Best For</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
                 <a href="order.html?package=self" class="btn-primary">Get Started - $35</a>
             </div>
         </div>
@@ -1254,7 +1294,7 @@
             <div class="step">
                 <div class="step-number">3</div>
                 <h4>Get Verified Results</h4>
-                <p>Receive your verified results within 8 hours with clear screenshots, findings, and post URLs if found.</p>
+                <p>Receive your verified results within 6 hours with clear screenshots, findings, and post URLs if found.</p>
             </div>
         </div>
     </section>
@@ -1289,7 +1329,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        We typically deliver results within 8 hours. Most searches are completed even faster, but we guarantee delivery within the 8-hour window from the time of payment confirmation.
+                        We typically deliver results within 6 hours. Most searches are completed even faster, but we guarantee delivery within the 6-hour window from the time of payment confirmation.
                     </div>
                 </div>
             </div>
