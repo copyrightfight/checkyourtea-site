@@ -711,13 +711,31 @@
 
         .reviews-scroll-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.2rem;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
             padding: 1rem;
             scrollbar-width: thin;
             scrollbar-color: var(--accent-green) var(--card-bg);
+        }
+
+        @media (max-width: 1200px) {
+            .reviews-scroll-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .reviews-scroll-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .reviews-scroll-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         .reviews-scroll-container::-webkit-scrollbar {
@@ -777,6 +795,11 @@
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+
+        .review-text .highlight-word {
+            color: var(--accent-green);
+            font-weight: 600;
         }
 
         .review-footer {
@@ -1394,42 +1417,110 @@
             }
         }
 
-        // Reviews data
-        const reviewsData = [
-            {"username":"u/Wonderful-Clerk4039","text":"Really great service, the dude running it was super helpful and respectful.","date":"12d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/o02q4ia/"},
-            {"username":"u/Illustrious_Rip_1341","text":"Helped me out with the tea app! Super quick and professional!","date":"14d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzxqyxe/"},
-            {"username":"u/Adventurous_Pie_8244","text":"Great service! Fast and reliable. Highly recommend!","date":"15d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzv1234/"},
-            {"username":"u/TechSavvy_User","text":"The self-search option is amazing. Got exactly what I needed.","date":"16d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzt5678/"},
-            {"username":"u/PrivacyMatters","text":"Completely discreet and professional. Would use again.","date":"18d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzr9012/"},
-            {"username":"u/QuickResults","text":"Got my results in less than 6 hours. Very impressed!","date":"19d ago","url":"https://reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you/nzp3456/"}
-        ];
-
-        // Load reviews
-        function loadReviews() {
+        // Fetch and load reviews from Reddit
+        async function loadReviews() {
             const reviewsGrid = document.getElementById('reviews-grid');
             const reviewCount = document.getElementById('review-count');
             
-            reviewCount.textContent = `${reviewsData.length} verified testimonials`;
+            try {
+                // Fetch Reddit thread data
+                const response = await fetch('https://www.reddit.com/r/vouchvault/comments/1mi176i/tea_app_search_service_vouch_if_i_helped_you.json');
+                const data = await response.json();
+                
+                // Extract comments from the thread
+                const comments = data[1].data.children;
+                
+                // Filter and process reviews
+                const reviews = comments
+                    .map(comment => comment.data)
+                    .filter(data => {
+                        // Filter out deleted, removed, or question comments
+                        if (data.author === '[deleted]') return false;
+                        if (data.removed_by_category !== null) return false;
+                        if (!data.body || data.body.trim() === '') return false;
+                        if (data.body.includes('[removed]') || data.body.includes('[deleted]')) return false;
+                        
+                        // Filter out questions (comments ending with ?)
+                        const trimmedBody = data.body.trim();
+                        if (trimmedBody.endsWith('?')) return false;
+                        
+                        // Filter out very short comments (likely not reviews)
+                        if (trimmedBody.length < 15) return false;
+                        
+                        return true;
+                    })
+                    .map(data => ({
+                        username: `u/${data.author}`,
+                        text: data.body,
+                        date: formatDate(data.created_utc),
+                        url: `https://reddit.com${data.permalink}`
+                    }));
+                
+                // Shuffle reviews for random order
+                const shuffledReviews = reviews.sort(() => Math.random() - 0.5);
+                
+                // Update count
+                reviewCount.textContent = `${shuffledReviews.length} verified testimonials`;
+                
+                // Render review cards
+                shuffledReviews.forEach(review => {
+                    const reviewCard = document.createElement('div');
+                    reviewCard.className = 'review-card';
+                    reviewCard.onclick = () => window.open(review.url, '_blank');
+                    
+                    // Highlight key words in review text
+                    const highlightedText = highlightKeywords(review.text);
+                    
+                    reviewCard.innerHTML = `
+                        <div class="review-header">
+                            <div class="review-username">${review.username}</div>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">${highlightedText}</div>
+                        <div class="review-footer">
+                            <div class="review-date">${review.date}</div>
+                            <div class="review-link-indicator">View on Reddit →</div>
+                        </div>
+                    `;
+                    
+                    reviewsGrid.appendChild(reviewCard);
+                });
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                reviewCount.textContent = 'Loading reviews...';
+            }
+        }
+        
+        // Format Unix timestamp to readable date
+        function formatDate(timestamp) {
+            const date = new Date(timestamp * 1000);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
             
-            reviewsData.forEach(review => {
-                const reviewCard = document.createElement('div');
-                reviewCard.className = 'review-card';
-                reviewCard.onclick = () => window.open(review.url, '_blank');
-                
-                reviewCard.innerHTML = `
-                    <div class="review-header">
-                        <div class="review-username">${review.username}</div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div class="review-text">${review.text}</div>
-                    <div class="review-footer">
-                        <div class="review-date">${review.date}</div>
-                        <div class="review-link-indicator">View on Reddit →</div>
-                    </div>
-                `;
-                
-                reviewsGrid.appendChild(reviewCard);
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 30) return `${diffDays}d ago`;
+            if (diffDays < 365) return `${Math.floor(diffDays / 30)}mo ago`;
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+        
+        // Highlight key positive words
+        function highlightKeywords(text) {
+            const keywords = [
+                'great', 'amazing', 'excellent', 'fantastic', 'awesome', 'wonderful',
+                'helpful', 'professional', 'quick', 'fast', 'reliable', 'discreet',
+                'recommend', 'impressed', 'perfect', 'best', 'super', 'love',
+                'thank', 'thanks', 'grateful', 'appreciate', 'satisfied', 'happy'
+            ];
+            
+            let highlightedText = text;
+            keywords.forEach(keyword => {
+                const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
+                highlightedText = highlightedText.replace(regex, '<span class="highlight-word">$1</span>');
             });
+            
+            return highlightedText;
         }
     </script>
 </body>
