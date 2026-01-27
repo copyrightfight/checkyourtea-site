@@ -752,36 +752,72 @@
 
         .review-card {
             background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-dark) 100%);
-            border: 3px solid;
-            border-radius: 20px;
-            padding: 1.5rem;
-            transition: all 0.3s;
+            border: 2px solid;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.4s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.6rem;
             position: relative;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            opacity: 0.7;
+            filter: brightness(0.6);
         }
 
         .review-card::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 30px;
-            width: 20px;
-            height: 20px;
+            bottom: -8px;
+            left: 25px;
+            width: 16px;
+            height: 16px;
             background: inherit;
-            border-right: 3px solid;
-            border-bottom: 3px solid;
+            border-right: 2px solid;
+            border-bottom: 2px solid;
             border-color: inherit;
             transform: rotate(45deg);
-            border-radius: 0 0 5px 0;
+            border-radius: 0 0 4px 0;
+            transition: all 0.4s ease;
         }
 
         .review-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) scale(1.05);
+            opacity: 1;
+            filter: brightness(1);
+            z-index: 10;
+        }
+
+        /* Spotlight glow effects for each color */
+        .review-card:nth-child(6n+1):hover {
+            box-shadow: 0 0 40px rgba(0, 188, 212, 0.8), 0 0 80px rgba(0, 188, 212, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+2):hover {
+            box-shadow: 0 0 40px rgba(255, 87, 34, 0.8), 0 0 80px rgba(255, 87, 34, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+3):hover {
+            box-shadow: 0 0 40px rgba(156, 39, 176, 0.8), 0 0 80px rgba(156, 39, 176, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+4):hover {
+            box-shadow: 0 0 40px rgba(139, 195, 74, 0.8), 0 0 80px rgba(139, 195, 74, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+5):hover {
+            box-shadow: 0 0 40px rgba(233, 30, 99, 0.8), 0 0 80px rgba(233, 30, 99, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+6):hover {
+            box-shadow: 0 0 40px rgba(255, 152, 0, 0.8), 0 0 80px rgba(255, 152, 0, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dim siblings when one is hovered */
+        .reviews-scroll-container:has(.review-card:hover) .review-card:not(:hover) {
+            opacity: 0.4;
+            filter: brightness(0.4);
         }
 
         /* Colorful speech bubble variations */
@@ -843,22 +879,22 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .review-username {
             font-weight: 700;
             color: #ffffff;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .review-text {
             color: #ffffff;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -868,23 +904,23 @@
             color: #ffeb3b;
             font-weight: 700;
             background: rgba(0, 0, 0, 0.2);
-            padding: 2px 4px;
-            border-radius: 3px;
+            padding: 1px 3px;
+            border-radius: 2px;
         }
 
         .review-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 0.8rem;
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            font-size: 0.75rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.9);
         }
 
         .review-date {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
         .review-link-indicator {
