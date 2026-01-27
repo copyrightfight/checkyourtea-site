@@ -717,8 +717,11 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            max-height: none;
+            max-height: 800px;
+            overflow-y: auto;
             padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-green) var(--card-bg);
         }
 
         @media (max-width: 900px) {
@@ -838,20 +841,16 @@
 
         .review-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            margin-bottom: 0.5rem;
         }
 
         .review-username {
             font-weight: 700;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .review-stars {
-            color: #fbbf24;
-            font-size: 0.85rem;
         }
 
         .review-text {
@@ -1547,11 +1546,10 @@
                     reviewCard.innerHTML = `
                         <div class="review-header">
                             <div class="review-username">${review.username}</div>
-                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
                         </div>
                         <div class="review-text">${highlightedText}</div>
                         <div class="review-footer">
-                            <div class="review-date">${review.date}</div>
+                            <div class="review-date">${review.time || '5mo ago'}</div>
                             <div class="review-link-indicator">View on Reddit →</div>
                         </div>
                     `;
