@@ -701,14 +701,6 @@
             transition: background-color 0.3s;
         }
 
-        .reviews-count {
-            text-align: center;
-            color: var(--accent-green);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-
         .reviews-container-wrapper {
             position: relative;
         }
@@ -753,32 +745,32 @@
         .review-card {
             background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-dark) 100%);
             border: 2px solid;
-            border-radius: 16px;
-            padding: 1rem;
+            border-radius: 12px;
+            padding: 0.75rem;
             transition: all 0.4s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.5rem;
             position: relative;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            opacity: 0.7;
-            filter: brightness(0.6);
+            opacity: 0.85;
+            filter: brightness(0.8);
         }
 
         .review-card::before {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 25px;
-            width: 16px;
-            height: 16px;
+            bottom: -7px;
+            left: 20px;
+            width: 14px;
+            height: 14px;
             background: inherit;
             border-right: 2px solid;
             border-bottom: 2px solid;
             border-color: inherit;
             transform: rotate(45deg);
-            border-radius: 0 0 4px 0;
+            border-radius: 0 0 3px 0;
             transition: all 0.4s ease;
         }
 
@@ -879,22 +871,22 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .review-username {
             font-weight: 700;
             color: #ffffff;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .review-text {
             color: #ffffff;
-            font-size: 0.8rem;
-            line-height: 1.5;
+            font-size: 0.75rem;
+            line-height: 1.4;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -912,15 +904,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 0.6rem;
+            padding-top: 0.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: rgba(255, 255, 255, 0.9);
         }
 
         .review-date {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .review-link-indicator {
@@ -1403,7 +1395,6 @@
             <h2 class="section-title">Private, discreet Tea app profile lookup with verified results</h2>
             <p class="section-subtitle">Real reviews from real users. Click any card to view the original Reddit comment.</p>
         </div>
-        <p class="reviews-count" id="review-count"></p>
         
         <div class="reviews-container-wrapper">
             <div class="reviews-scroll-container" id="reviews-grid">
@@ -1557,7 +1548,6 @@
         // Load reviews from JSON file
         async function loadReviews() {
             const reviewsGrid = document.getElementById('reviews-grid');
-            const reviewCount = document.getElementById('review-count');
             
             try {
                 // Fetch reviews from local JSON file
@@ -1566,9 +1556,6 @@
                 
                 // Shuffle reviews for random order
                 const shuffledReviews = reviews.sort(() => Math.random() - 0.5);
-                
-                // Update count
-                reviewCount.textContent = `${shuffledReviews.length} verified testimonials`;
                 
                 // Render review cards
                 shuffledReviews.forEach(review => {
