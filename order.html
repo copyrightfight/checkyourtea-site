@@ -417,16 +417,21 @@
                 <h2 class="form-title">Standard Search Service</h2>
                 <p class="form-subtitle">Please provide the information for the person you'd like us to search</p>
 
+                <div class="requirement-notice" style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <h3 style="color: var(--accent-green); margin-bottom: 0.75rem; font-size: 1.1rem;">Info on the search service</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">We are ready to begin your private Tea App search. To ensure a thorough and accurate search, please provide the details you feel comfortable sharing in the fields below. The more specific information you can provide, the better the chances of finding a post if there is one! The entire search is video recorded and then sent to you via email in the form of a link. If you are posted and/or see anything in the video you'd like information on, please relay this back to us and we will supply the screenshots and URL for that post.</p>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Once you complete this form and cover payment, your request will be placed in our priority queue. You can expect your complete results—including screenshots and any relevant links—in under 6 hours.</p>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;"><strong>Your privacy is our priority.</strong> All information you share is confidential and will only be used to conduct this search. We treat every request with discretion.</p>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">The video will be password-protected with a password specific to your video alone! The video will be deleted within 48 hours of being sent to you and can be deleted immediately upon request.</p>
+                </div>
+
                 <form id="standard-search-form" onsubmit="submitStandardForm(event)">
                     <div class="form-group">
                         <label class="form-label" for="std-first-name">First Name *</label>
                         <input type="text" id="std-first-name" class="form-input" required>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="std-last-name">Last Name *</label>
-                        <input type="text" id="std-last-name" class="form-input" required>
-                    </div>
+
 
                     <div class="form-group">
                         <label class="form-label" for="std-email">Your Email *</label>
@@ -449,7 +454,9 @@
                 <h2 class="form-title">Self Search Service</h2>
                 <p class="form-subtitle">We'll guide you through searching yourself</p>
 
-                <div class="requirement-notice">
+                <div class="requirement-notice" style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">This service allows you to take control of the Tea App without needing an account of your own! Using our secure, guided remote session, you will gain temporary access to a private workspace where the app is already set up and ready—allowing you to search directly and on your terms.</p>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Once your request is confirmed, we’ll send you simple instructions to connect safely through your browser, with no installation or tech setup required. Your session is private, encrypted, and completely deleted once your search is complete.</p>
                     <p><strong>Important Requirement:</strong></p>
                     <p>You must have a computer (Mac or Windows) to use this service.</p>
                 </div>
@@ -458,11 +465,6 @@
                     <div class="form-group">
                         <label class="form-label" for="self-first-name">First Name *</label>
                         <input type="text" id="self-first-name" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="self-last-name">Last Name *</label>
-                        <input type="text" id="self-last-name" class="form-input" required>
                     </div>
 
                     <div class="form-group">
@@ -574,7 +576,6 @@
             const formData = {
                 package: 'self',
                 firstName: document.getElementById('self-first-name').value,
-                lastName: document.getElementById('self-last-name').value,
                 contact: document.getElementById('self-contact').value,
                 hasComputer: true
             };
