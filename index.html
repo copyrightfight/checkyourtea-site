@@ -514,6 +514,194 @@
             margin-right: auto;
         }
 
+        /* Tabbed Services Component */
+        .services-tabbed {
+            padding: 3rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .services-tabbed-container {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .services-tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+
+        .services-tab-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background-color: transparent;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .services-tab-btn:hover {
+            color: var(--text-primary);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .services-tab-btn-active {
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .tab-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .tab-price {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .services-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .services-tab-content-active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-content-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-icon-box {
+            font-size: 2.5rem;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .service-content-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .service-features-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            line-height: 1.6;
+        }
+
+        .service-features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .services-cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            text-align: center;
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .services-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .services-tabbed-container {
+                padding: 1.5rem;
+            }
+
+            .services-tab-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .services-tab-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .service-content-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .service-icon-box {
+                min-width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+        }
+
         .service-card {
             background-color: var(--card-bg);
             padding: 2rem;
@@ -1361,51 +1549,68 @@
 
 
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Services Section - Tabbed Component -->
+    <section class="services-tabbed" id="services">
         <div class="section-header">
-            <div class="section-badge">Real Situations</div>
-            <h2 class="section-title">Choose Your Service</h2>
-            <p class="section-subtitle">Select the service that best fits your needs</p>
+            <h2 class="section-title">Choose Your Search Method</h2>
+            <p class="section-subtitle">Switch between professional search or self-directed access</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🔍</div>
-                <h3>Standard Search Service</h3>
-                <div class="service-price">$25</div>
-                <div class="price-label">One-Time Payment</div>
-                <p>A complete Tea App lookup performed for you. You provide the information, and I handle the entire search privately and discreetly.</p>
-                <p class="best-for">What's Included</p>
-                <ul class="features-list">
-                    <li>Full Tea App search performed on your behalf</li>
-                    <li>Screenshots and proof of any results</li>
-                    <li>Priority support</li>
-                    <li>Fast turnaround (under 6 hours)</li>
-                    <li>Post URL included if found</li>
-                </ul>
-                <p class="best-for">Best For</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
-                <a href="order.html?package=standard" class="btn-primary">Get Started - $25</a>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⭐</div>
-                <h3>Self Search Service</h3>
-                <div class="service-price">$35</div>
-                <div class="price-label">One-Time Payment</div>
-                <p>You get the ability to search the Tea App yourself, giving you full control.</p>
-                <p class="best-for">Requirements</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">A computer (Mac or Windows)</p>
-                <p class="best-for">What's Included</p>
-                <ul class="features-list">
-                    <li>Access to perform your own Tea App search</li>
-                    <li>Screenshots and proof of any results</li>
-                    <li>Priority support</li>
-                    <li>Fast turnaround (under 6 hours)</li>
-                    <li>Post URL included if found</li>
-                </ul>
-                <p class="best-for">Best For</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
-                <a href="order.html?package=self" class="btn-primary">Get Started - $35</a>
+        
+        <div class="max-w-4xl mx-auto px-4 md:px-6">
+            <div class="services-tabbed-container">
+                
+                <!-- Tab Buttons -->
+                <div class="services-tab-buttons">
+                    <button onclick="switchService('standard')" id="btn-standard" class="services-tab-btn services-tab-btn-active">
+                        <span class="tab-label">Standard Search</span>
+                        <span class="tab-price">$25</span>
+                    </button>
+                    <button onclick="switchService('self')" id="btn-self" class="services-tab-btn">
+                        <span class="tab-label">Self-Search</span>
+                        <span class="tab-price">$35</span>
+                    </button>
+                </div>
+
+                <!-- Standard Search Content -->
+                <div id="content-standard" class="services-tab-content services-tab-content-active">
+                    <div class="service-content-header">
+                        <div class="service-icon-box">🔍</div>
+                        <div>
+                            <h3>We Do The Work For You</h3>
+                            <p>Our team performs a comprehensive Tea App profile search and provides full video evidence.</p>
+                        </div>
+                    </div>
+                    <ul class="service-features-list">
+                        <li>✅ Professional Tea App profile search performed</li>
+                        <li>✅ Video proof of search included</li>
+                        <li>✅ Screenshots of all matching profiles</li>
+                        <li>✅ Delivered within 6 hours</li>
+                        <li>✅ Post URLs included if found</li>
+                        <li>✅ Dating app background check service</li>
+                    </ul>
+                    <a href="order.html?package=standard" class="services-cta-btn">Order Standard Search - $25</a>
+                </div>
+
+                <!-- Self-Search Content -->
+                <div id="content-self" class="services-tab-content">
+                    <div class="service-content-header">
+                        <div class="service-icon-box">⚡</div>
+                        <div>
+                            <h3>Take Control - Search Yourself</h3>
+                            <p>Get instant access to perform Tea App searches yourself, anytime you want.</p>
+                        </div>
+                    </div>
+                    <ul class="service-features-list">
+                        <li>✅ Instant access to search tools</li>
+                        <li>✅ Search Tea App profiles yourself</li>
+                        <li>✅ Private & completely anonymous</li>
+                        <li>✅ Search as many names as you want</li>
+                        <li>✅ Full control over your searches</li>
+                        <li>✅ Personal dating app verification tool</li>
+                    </ul>
+                    <a href="order.html?package=self" class="services-cta-btn">Get Self-Search Access - $35</a>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1546,6 +1751,26 @@
     </footer>
 
     <script>
+        // Service Tab Switching Function
+        function switchService(type) {
+            const stdBtn = document.getElementById('btn-standard');
+            const selfBtn = document.getElementById('btn-self');
+            const stdContent = document.getElementById('content-standard');
+            const selfContent = document.getElementById('content-self');
+
+            if (type === 'standard') {
+                stdBtn.classList.add('services-tab-btn-active');
+                selfBtn.classList.remove('services-tab-btn-active');
+                stdContent.classList.add('services-tab-content-active');
+                selfContent.classList.remove('services-tab-content-active');
+            } else {
+                selfBtn.classList.add('services-tab-btn-active');
+                stdBtn.classList.remove('services-tab-btn-active');
+                selfContent.classList.add('services-tab-content-active');
+                stdContent.classList.remove('services-tab-content-active');
+            }
+        }
+
         // Theme Toggle Function
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
