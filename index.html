@@ -111,6 +111,21 @@
             }
         }
 
+        @keyframes bonusGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.6),
+                            0 0 30px rgba(16, 185, 129, 0.4),
+                            0 0 45px rgba(16, 185, 129, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(16, 185, 129, 0.8),
+                            0 0 50px rgba(16, 185, 129, 0.6),
+                            0 0 75px rgba(16, 185, 129, 0.3);
+                transform: scale(1.05);
+            }
+        }
+
         /* Navigation */
         header {
             position: fixed;
@@ -292,6 +307,14 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(16, 185, 129, 0.6);
@@ -366,36 +389,39 @@
             display: flex;
             justify-content: center;
             gap: 3rem;
-            padding: 2.5rem 2rem;
-            background-color: var(--secondary-dark);
+            padding: 3.5rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(16, 185, 129, 0.05) 50%, var(--secondary-dark) 100%);
             flex-wrap: wrap;
             transition: background-color 0.3s;
         }
 
         .stat-item {
             text-align: center;
-            padding: 1.5rem 2rem;
-            background-color: var(--card-bg);
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(16, 185, 129, 0.08) 100%);
             border-radius: 16px;
             border: 2px solid var(--accent-green);
-            min-width: 180px;
+            min-width: 200px;
             transition: all 0.3s;
             position: relative;
             animation: glow 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
+            border-color: var(--accent-green-bright);
         }
 
         .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--accent-green);
             margin-bottom: 0.3rem;
@@ -480,28 +506,50 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
             margin-top: 2rem;
-            max-width: 900px;
+            max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .service-card {
             background-color: var(--card-bg);
-            padding: 1.3rem;
-            border-radius: 12px;
+            padding: 2rem;
+            border-radius: 16px;
             border: 2px solid var(--border-color);
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: visible;
+        }
+
+        .service-card::before {
+            content: 'ALL FUTURE\ASEARCHES FREE';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-align: center;
+            white-space: pre-line;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5),
+                        0 0 40px rgba(16, 185, 129, 0.3);
+            animation: bonusGlow 2.5s ease-in-out infinite;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .service-card:hover {
             border-color: var(--accent-green);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25);
         }
 
         .service-icon {
@@ -1224,6 +1272,9 @@
                 <p class="hero-subtitle" style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.95;">
                     Or take control and run the search yourself — your choice.
                 </p>
+                <p style="margin-top: 1.5rem; font-size: 1rem; font-weight: 700; color: #1b7a4a;">
+                    Simple, fast, and completely confidential
+                </p>
                 <div class="hero-buttons">
                     <a href="order.html" class="btn-primary">Start Tea App Search</a>
                 </div>
@@ -1308,13 +1359,7 @@
         </div>
     </section>
 
-    <!-- Relationship Section -->
-    <section class="relationship-section">
-        <div class="relationship-content">
-            <h3>Pay once and never again.</h3>
-            <p>We offer all future searches for free because with us, it's a relationship. Think of us as the friend you've always needed!</p>
-        </div>
-    </section>
+
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -1337,7 +1382,6 @@
                     <li>Priority support</li>
                     <li>Fast turnaround (under 6 hours)</li>
                     <li>Post URL included if found</li>
-                    <li>Free future searches after your first initial payment</li>
                 </ul>
                 <p class="best-for">Best For</p>
                 <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
@@ -1358,7 +1402,6 @@
                     <li>Priority support</li>
                     <li>Fast turnaround (under 6 hours)</li>
                     <li>Post URL included if found</li>
-                    <li>Free future searches after your first initial payment</li>
                 </ul>
                 <p class="best-for">Best For</p>
                 <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
@@ -1366,6 +1409,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Spacer Section -->
+    <section style="height: 60px; background-color: var(--primary-dark);"></section>
 
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
@@ -1421,7 +1467,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        We typically deliver results within 6 hours. Most searches are completed even faster, but we guarantee delivery within the 6-hour window from the time of payment confirmation.
+                        We deliver Tea App search results within 6 hours. Most Tea App lookups finish even faster, but we guarantee your verified results within a 6‑hour window from the moment your payment is confirmed.
                     </div>
                 </div>
             </div>
@@ -1432,7 +1478,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Yes, absolutely. All searches are conducted anonymously and leave no trace. Your identity and the fact that a search was performed remain completely confidential. We use secure methods that ensure no one will know you looked them up.
+                        All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential. Our secure search methods ensure no one will ever know you checked their Tea App profile or name.
                     </div>
                 </div>
             </div>
@@ -1443,7 +1489,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        You'll first receive a video of the entire search process. If you see anything in the video that you want us to investigate further, you can relay that to us and we will get the entire post back to you in screenshots and direct URL links.
+                        Every Tea App search includes a full screen‑recorded video of the entire lookup. If you spot anything in the video that needs deeper investigation, we'll pull the full post for you — including screenshots, context, and direct Tea App URL links.
                     </div>
                 </div>
             </div>
@@ -1454,7 +1500,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        We collect details about who you want us to search for – <strong>name</strong>, location, possible <strong>photos</strong>, and <strong>dating apps</strong> they use. Then we manually search the <strong>Tea dating app</strong> and related <strong>profiles</strong> to find any posts, comments, or reviews that mention you.
+                        We collect the details you provide — name, location, nicknames, social media handles, or phone numbers — and run a full manual Tea App search. Every lookup is recorded on video, includes screenshots of any matches, and gives you a clear, private report of your Tea App results.
                     </div>
                 </div>
             </div>
@@ -1465,7 +1511,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Our main service is searching the Tea App to get you verified results. We show you what's out there and back it up with videos, screenshots, and direct links to the posts. While we don't currently offer removals on our site, we can recommend removal services if you're interested!
+                        CheckYourTea.com was created to provide fast, private Tea App searches and accurate Tea App lookups. Our main service is running manual searches for your name, photos, or profile, and upon request we can also guide you toward reputable Tea App removal services.
                     </div>
                 </div>
             </div>
@@ -1483,7 +1529,7 @@
             <div class="footer-links">
                 <a href="terms.html">Terms of Service</a>
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="mailto:support@checkyourtea.com">Contact</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="legal-text">
                 <p><strong>Legal Notice:</strong> CheckYourTea.com is an independent service and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with the Tea app or its developers. Tea is a trademark of its respective owners. This service operates independently and is designed to help users search public information. All lookups are conducted with privacy and discretion in mind.</p>
