@@ -506,24 +506,69 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             margin-top: 2rem;
-            max-width: 1100px;
+            max-width: 1300px;
             margin-left: auto;
             margin-right: auto;
+            align-items: center;
+        }
+
+        .services-left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .services-left-content h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .services-left-content p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .services-right-box {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+        }
+
+        .services-right-box h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .services-cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
 
         .service-card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid var(--border-color);
+            background-color: rgba(16, 185, 129, 0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent-green);
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: visible;
+        }
+
+        .services-right-box .service-card {
+            background-color: rgba(16, 185, 129, 0.08);
         }
 
         .service-card::before {
@@ -1267,13 +1312,13 @@
                     <span class="pulse-dot"></span>
                     ⚠️ THEY'RE TALKING ABOUT YOU
                 </div>
-                <h1 class="hero-title">Tea App Searching Made Simple</h1>
-                <p class="hero-subtitle">You give the details. We handle the search. You get the truth!</p>
-                <p class="hero-subtitle" style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.95;">
-                    Or take control and run the search yourself — your choice.
+                <h1 class="hero-title">Worried You're On the Tea App?</h1>
+                <p class="hero-subtitle">Take a breath — we'll check for you.</p>
+                <p class="hero-subtitle" style="margin-top: 1rem; font-size: 1rem; font-weight: 600;">
+                    Fast results. Zero trace. Real proof.
                 </p>
-                <p style="margin-top: 1.5rem; font-size: 1rem; font-weight: 700; color: #1b7a4a;">
-                    Simple, fast, and completely confidential
+                <p class="hero-subtitle" style="margin-top: 0.5rem; font-size: 1rem; font-weight: 600;">
+                    None of the stress.
                 </p>
                 <div class="hero-buttons">
                     <a href="order.html" class="btn-primary">Start Tea App Search</a>
@@ -1363,49 +1408,35 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-header">
-            <div class="section-badge">Real Situations</div>
-            <h2 class="section-title">Choose Your Service</h2>
-            <p class="section-subtitle">Select the service that best fits your needs</p>
-        </div>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🔍</div>
-                <h3>Standard Search Service</h3>
-                <div class="service-price">$25</div>
-                <div class="price-label">One-Time Payment</div>
-                <p>A complete Tea App lookup performed for you. You provide the information, and I handle the entire search privately and discreetly.</p>
-                <p class="best-for">What's Included</p>
-                <ul class="features-list">
-                    <li>Full Tea App search performed on your behalf</li>
-                    <li>Screenshots and proof of any results</li>
-                    <li>Priority support</li>
-                    <li>Fast turnaround (under 6 hours)</li>
-                    <li>Post URL included if found</li>
-                </ul>
-                <p class="best-for">Best For</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants a fast, private, done-for-you Tea lookup without needing access to the app.</p>
-                <a href="order.html?package=standard" class="btn-primary">Get Started - $25</a>
+            <!-- Left Content -->
+            <div class="services-left-content">
+                <h3>Get Your Tea App Results</h3>
+                <p>Choose Your Service Level</p>
+                <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary);">We offer two ways to search the Tea App. Whether you want us to handle everything or prefer to take control yourself, we've got you covered with fast, private, and discreet service.</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon">⭐</div>
-                <h3>Self Search Service</h3>
-                <div class="service-price">$35</div>
-                <div class="price-label">One-Time Payment</div>
-                <p>You get the ability to search the Tea App yourself, giving you full control.</p>
-                <p class="best-for">Requirements</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">A computer (Mac or Windows)</p>
-                <p class="best-for">What's Included</p>
-                <ul class="features-list">
-                    <li>Access to perform your own Tea App search</li>
-                    <li>Screenshots and proof of any results</li>
-                    <li>Priority support</li>
-                    <li>Fast turnaround (under 6 hours)</li>
-                    <li>Post URL included if found</li>
-                </ul>
-                <p class="best-for">Best For</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.2rem;">Anyone who wants full control and the ability to run their own Tea searches anytime.</p>
-                <a href="order.html?package=self" class="btn-primary">Get Started - $35</a>
+            
+            <!-- Right Box with Services -->
+            <div class="services-right-box">
+                <h4>Select Your Service</h4>
+                <div class="services-cards-container">
+                    <div class="service-card">
+                        <div class="service-icon">🔍</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Standard</h3>
+                        <div class="service-price" style="font-size: 1.8rem; margin-bottom: 0.3rem;">$25</div>
+                        <div class="price-label">5-7 days processing</div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5;">We handle the search for you</p>
+                        <a href="order.html?package=standard" class="btn-primary" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">Get Started</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⭐</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Priority</h3>
+                        <div class="service-price" style="font-size: 1.8rem; margin-bottom: 0.3rem;">$35</div>
+                        <div class="price-label" style="color: var(--accent-green); font-weight: 700;">45-72 hours processing</div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5;">You control the search</p>
+                        <a href="order.html?package=self" class="btn-primary" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">Get Started</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1418,7 +1449,7 @@
         <div class="section-header">
             <div class="section-badge">Simple Process</div>
             <h2 class="section-title">Discreet Tea app profile lookup in three steps</h2>
-            <p class="section-subtitle">Simple, fast, and completely confidential</p>
+            <p class="section-subtitle" style="font-weight: 700; color: #1b7a4a;">Simple, fast, and completely confidential</p>
         </div>
         <div class="steps-grid">
             <div class="step">
