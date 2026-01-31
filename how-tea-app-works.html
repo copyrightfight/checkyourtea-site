@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Does the Tea App Work? Technical Breakdown | CheckYourTea</title>
+    <meta name="description" content="Detailed explanation of how the Tea App works, including posting mechanics, algorithms, and visibility features.">
+    <meta name="keywords" content="how tea app works, tea app algorithm, tea app features, tea app posting">
+    <meta property="og:title" content="How Does the Tea App Work? Technical Breakdown">
+    <meta property="og:description" content="Understanding the mechanics behind the Tea App.">
+    <meta property="og:type" content="article">
+    
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        article h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 0.5rem;
+        }
+
+        article h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        article p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        article ul, article ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        article li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--accent-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .cta-section {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--accent-green);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            margin-top: 0;
+        }
+
+        .cta-section a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 2rem 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+
+            article h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+    
+    <script defer src="/js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTea
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/reviews.html">Reviews</a></li>
+                <li><button id="themeToggle" aria-label="Toggle dark mode">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <article>
+            <div class="article-header">
+                <h1>How Does the Tea App Work? A Technical Breakdown</h1>
+                <div class="article-meta">
+                    Published: January 2026 | Updated: January 2026 | Read time: 10 minutes
+                </div>
+            </div>
+
+            <p>Understanding how the Tea app works is the first step to understanding why people are concerned about their privacy on it. This guide breaks down the mechanics, algorithms, and features that make Tea different from traditional social media.</p>
+
+            <h2>The Core Architecture</h2>
+
+            <p>The Tea app is built on a simple but powerful premise: anonymous discussion organized by real names. Here's how it works at a fundamental level:</p>
+
+            <h3>1. Anonymous User Accounts</h3>
+            <p>Users create accounts without providing their real names. They can post under any name they choose, or remain completely anonymous. This anonymity is the core feature that drives the app's appeal and controversy.</p>
+
+            <h3>2. Name-Based Organization</h3>
+            <p>Posts are organized by the names of people being discussed. When you search for a name, you see all posts about that person. This creates a "profile" for each person, even if they've never used the app.</p>
+
+            <h3>3. Community Voting</h3>
+            <p>Users can upvote or downvote posts. Popular posts rise to the top, creating a visibility hierarchy. This is similar to Reddit but applied to real people's names.</p>
+
+            <h2>The Posting Mechanism</h2>
+
+            <p>Here's what happens when someone posts on Tea:</p>
+
+            <ol>
+                <li><strong>User opens the app</strong> and selects "Create Post"</li>
+                <li><strong>User enters a name</strong> (the person being discussed)</li>
+                <li><strong>User writes content</strong> (opinion, story, claim, question)</li>
+                <li><strong>User submits</strong> — the post is instantly published</li>
+                <li><strong>Post appears</strong> in that person's "profile" on the app</li>
+                <li><strong>Other users can see, comment, and vote</strong> on the post</li>
+            </ol>
+
+            <div class="highlight-box">
+                <strong>Critical Point:</strong> There is no moderation delay. Posts go live instantly. There is no review process. The person being discussed is not notified.
+            </div>
+
+            <h2>How Posts Gain Visibility</h2>
+
+            <p>Not all posts are equally visible. Tea uses an algorithm to determine which posts appear at the top of a person's profile:</p>
+
+            <h3>Factors That Increase Visibility</h3>
+            <ul>
+                <li><strong>Upvotes:</strong> Posts with more upvotes rank higher</li>
+                <li><strong>Recency:</strong> Newer posts get initial visibility</li>
+                <li><strong>Comments:</strong> Posts with active discussion rank higher</li>
+                <li><strong>Trending topics:</strong> Posts about trending names get amplified</li>
+            </ul>
+
+            <h3>Factors That Decrease Visibility</h3>
+            <ul>
+                <li><strong>Downvotes:</strong> Posts with many downvotes sink</li>
+                <li><strong>Reports:</strong> Reported posts may be hidden or removed</li>
+                <li><strong>Age:</strong> Very old posts eventually disappear from view</li>
+            </ul>
+
+            <h2>Search and Discovery</h2>
+
+            <p>Tea has multiple ways to discover posts:</p>
+
+            <h3>Direct Search</h3>
+            <p>Users can search for a specific name and see all posts about that person. This is the primary way people find out if they're being discussed.</p>
+
+            <h3>Trending Names</h3>
+            <p>Tea shows trending names based on recent activity. If your name suddenly gets multiple posts, you may appear on the trending list.</p>
+
+            <h3>Related Names</h3>
+            <p>The app suggests related names based on common connections. If your friend is discussed, you might be suggested as a related name.</p>
+
+            <h2>Privacy & Anonymity Features</h2>
+
+            <p>Tea emphasizes anonymity for posters, but this comes with tradeoffs:</p>
+
+            <h3>What Tea Hides</h3>
+            <ul>
+                <li>Poster's real name</li>
+                <li>Poster's profile information</li>
+                <li>Poster's IP address (theoretically)</li>
+            </ul>
+
+            <h3>What Tea Doesn't Hide</h3>
+            <ul>
+                <li>The content of the post itself</li>
+                <li>Metadata (timestamp, location if shared)</li>
+                <li>Patterns in posting behavior</li>
+                <li>Information shared by other users</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Important:</strong> Anonymity on Tea is not absolute. Law enforcement can subpoena user data. Screenshots can reveal the poster's device or account patterns. Linguistic analysis can sometimes identify posters.
+            </div>
+
+            <h2>Data Retention & Deletion</h2>
+
+            <p>Tea's policies on data retention are important to understand:</p>
+
+            <h3>Posts Can Be Deleted</h3>
+            <p>Users can delete their own posts, but only they can do so. Screenshots and shares mean the content may live on elsewhere.</p>
+
+            <h3>Accounts Can Be Deleted</h3>
+            <p>Users can delete their accounts, but this doesn't remove posts they've made. The posts remain under their anonymous user ID.</p>
+
+            <h3>Tea Retains Data</h3>
+            <p>Tea likely retains server logs and metadata even after posts are deleted. This data could be subpoenaed in legal cases.</p>
+
+            <h2>How Tea Makes Money</h2>
+
+            <p>Understanding Tea's business model helps explain its features:</p>
+
+            <ul>
+                <li><strong>Premium features:</strong> Some features may require payment</li>
+                <li><strong>Advertising:</strong> Ads may appear in the app</li>
+                <li><strong>Data:</strong> Aggregated user data may be valuable to researchers</li>
+            </ul>
+
+            <h2>The Bottom Line</h2>
+
+            <p>The Tea app works by combining anonymity, real-name organization, and community voting. This creates a powerful platform for discussion but also enables misinformation, harassment, and privacy concerns.</p>
+
+            <p>If you're concerned about what's being said about you on Tea, the first step is verification. Know exactly what's there before deciding how to respond.</p>
+
+            <div class="cta-section">
+                <h3>Want to See What's Being Said About You?</h3>
+                <p>Get a complete, verified report in under 6 hours.</p>
+                <a href="/#services">Check Your Tea App Profile</a>
+            </div>
+
+            <h2>Related Articles</h2>
+            <ul>
+                <li><a href="/what-is-tea-app.html">What Is the Tea App? A Clear Explanation</a></li>
+                <li><a href="/is-tea-app-anonymous.html">Is the Tea App Really Anonymous?</a></li>
+                <li><a href="/tea-app-privacy.html">Tea App Privacy Concerns: What You Should Know</a></li>
+                <li><a href="/tea-app-legal-options.html">Your Legal Rights When Discussed on Anonymous Apps</a></li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CheckYourTea.com — Private & Confidential</p>
+        <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a> | <a href="/contact.html">Contact</a></p>
+    </footer>
+</body>
+</html>
