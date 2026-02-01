@@ -277,7 +277,7 @@
 
         /* Escalating Title Styles */
         .hero-title {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             line-height: 1.3;
             font-weight: 700;
             color: var(--text-primary);
@@ -287,7 +287,7 @@
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.7;
             font-weight: 500;
         }
@@ -306,10 +306,10 @@
         .trust-signal-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.25rem;
+            gap: 0.5rem;
+            padding: 0.5rem 0.9rem;
             background: rgba(16, 185, 129, 0.08);
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid rgba(16, 185, 129, 0.3);
             transition: all 0.3s;
         }
@@ -321,14 +321,15 @@
         }
 
         .trust-icon {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-width: 20px;
         }
 
         .trust-text {
-            font-size: 0.95rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-primary);
             white-space: nowrap;
@@ -447,41 +448,71 @@
 
         .stat-item {
             text-align: center;
-            padding: 2rem 2.5rem;
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(16, 185, 129, 0.08) 100%);
-            border-radius: 16px;
-            border: 2px solid var(--accent-green);
-            min-width: 200px;
+            padding: 1.5rem 1.8rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            min-width: 140px;
             transition: all 0.3s;
             position: relative;
-            animation: glow 3s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -30%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .stat-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
-            border-color: var(--accent-green-bright);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%);
         }
 
         .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.8rem;
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
             display: block;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-number {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--accent-green);
-            margin-bottom: 0.3rem;
-            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            margin-bottom: 0.2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         /* Relationship Section */
@@ -2088,7 +2119,7 @@
     <section class="why-choose-us">
         <div class="section-header">
             <h2 class="section-title">Why Choose CheckYourTea?</h2>
-            <p class="section-subtitle">Three reasons our clients trust us with their reputation</p>
+            <p class="section-subtitle">Two reasons our clients trust us with their reputation</p>
         </div>
         <div class="why-choose-grid">
             <div class="why-choose-card">
@@ -2101,12 +2132,6 @@
                 <div class="why-choose-icon">🛡️</div>
                 <h3>Complete Privacy</h3>
                 <p>Your information is encrypted and never shared. We understand the sensitivity of reputation concerns and treat every request with absolute discretion.</p>
-                
-            </div>
-            <div class="why-choose-card">
-                <div class="why-choose-icon">⚖️</div>
-                <h3>Legal Support</h3>
-                <p>Our reports are formatted for legal proceedings and cease & desist letters. Know your rights and take action with confidence.</p>
                 
             </div>
         </div>
