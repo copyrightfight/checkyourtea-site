@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8EMYSN85L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N8EMYSN85L');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea App Search – Private Tea Profile Lookup & Results in 6 Hours</title>
+    <meta name="description" content="Search the Tea app discreetly to see what's being said. Private Tea app profile lookup with video proof, screenshots, and direct URLs. Results delivered in under 6 hours.">
+    <link rel="canonical" href="https://checkyourtea.com/" />
+    <meta property="og:title" content="Tea App Search – Private Tea Profile Lookup" />
+    <meta property="og:description" content="Find out if you've been posted on the Tea app. Secure, private search with video evidence." />
+    <meta property="og:url" content="https://checkyourtea.com/" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root[data-theme="dark"] {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --accent-green: #10b981;
+            --accent-green-bright: #34d399;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border-color: #2a2a2a;
+        }
+
+        :root[data-theme="light"] {
+            --primary-dark: #ffffff;
+            --secondary-dark: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-green: #10b981;
+            --accent-green-bright: #059669;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Animations */
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(0deg); }
+        }
+        
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(1deg); }
+            50% { transform: translateY(-12px) rotate(-1deg); }
+        }
+        
+        @keyframes float3 {
+            0%, 100% { transform: translateY(-5px) rotate(2deg); }
+            50% { transform: translateY(5px) rotate(0deg); }
+        }
+        
+        @keyframes float4 {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        
+        @keyframes float5 {
+            0%, 100% { transform: translateY(-3px) rotate(0deg); }
+            50% { transform: translateY(7px) rotate(-2deg); }
+        }
+        
+        @keyframes cloudPulse {
+            0%, 100% { opacity: 0.08; transform: scale(1); }
+            50% { opacity: 0.12; transform: scale(1.02); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.4),
+                            0 0 40px rgba(16, 185, 129, 0.2),
+                            0 0 60px rgba(16, 185, 129, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
+                            0 0 60px rgba(16, 185, 129, 0.3),
+                            0 0 90px rgba(16, 185, 129, 0.2);
+            }
+        }
+
+        @keyframes bonusGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.6),
+                            0 0 30px rgba(16, 185, 129, 0.4),
+                            0 0 45px rgba(16, 185, 129, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(16, 185, 129, 0.8),
+                            0 0 50px rgba(16, 185, 129, 0.6),
+                            0 0 75px rgba(16, 185, 129, 0.3);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-dark);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent-green);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .cta-button {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.65rem 1.3rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-green-bright);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section with Animated Thought Bubbles */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--primary-dark) 100%);
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--accent-green);
+            animation: pulse 2s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            position: relative;
+        }
+
+        .pulse-dot::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        /* Escalating Title Styles */
+        .hero-title {
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 2.2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* Trust Signals Row */
+        .hero-trust-signals {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-top: 2px solid rgba(16, 185, 129, 0.2);
+            border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .trust-signal-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: all 0.3s;
+        }
+
+        .trust-signal-item:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .trust-icon {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 2px solid var(--accent-green-bright);
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Thought Bubble Illustration */
+        .hero-illustration {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .cloud-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            animation: cloudPulse 6s ease-in-out infinite;
+        }
+
+        .thought-bubble {
+            position: absolute;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid var(--accent-green);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .thought-bubble {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--accent-green);
+        }
+
+        .thought-bubble:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.25);
+        }
+
+        .thought-bubble p {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Thought Bubble Positions */
+        .thought-1 { top: 5%; left: 10%; animation: float1 6s ease-in-out infinite; }
+        .thought-2 { top: 15%; right: 8%; animation: float2 7s ease-in-out infinite; }
+        .thought-3 { top: 35%; left: 5%; animation: float3 5.5s ease-in-out infinite; }
+        .thought-4 { top: 45%; right: 12%; animation: float4 6.5s ease-in-out infinite; }
+        .thought-5 { top: 65%; left: 8%; animation: float5 7s ease-in-out infinite; }
+        .thought-6 { top: 75%; right: 10%; animation: float1 6s ease-in-out infinite; }
+        .thought-7 { top: 25%; left: 35%; animation: float2 5s ease-in-out infinite; }
+        .thought-8 { top: 55%; right: 35%; animation: float3 6s ease-in-out infinite; }
+
+        .central-figure {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* Stats Section - Compact with Glow */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3.5rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(16, 185, 129, 0.05) 50%, var(--secondary-dark) 100%);
+            flex-wrap: wrap;
+            transition: background-color 0.3s;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border-radius: 16px;
+            border: 2px solid var(--accent-green);
+            min-width: 200px;
+            transition: all 0.3s;
+            position: relative;
+            animation: glow 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
+            border-color: var(--accent-green-bright);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Relationship Section */
+        .relationship-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            text-align: center;
+            border-top: 2px solid var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        .relationship-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .relationship-content h3 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .relationship-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Services Section - Compact */
+        .services {
+            padding: 3rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 2px solid var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tabbed Services Component */
+        .services-tabbed {
+            padding: 3rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .services-two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .services-left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .services-left-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .services-left-subtitle {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .services-left-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .services-features-highlight {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .feature-highlight-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-highlight-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-highlight-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .services-right-column {
+            display: flex;
+            justify-content: center;
+        }
+
+        .services-package-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .package-box-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .services-tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+
+        .services-tab-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background-color: transparent;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .services-tab-btn:hover {
+            color: var(--text-primary);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .services-tab-btn-active {
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .tab-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .tab-price {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .services-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .services-tab-content-active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-content-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-icon-box {
+            font-size: 2.5rem;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .service-content-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .service-features-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            line-height: 1.6;
+        }
+
+        .service-features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .services-cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-bright) 100%);
+            color: white;
+            text-align: center;
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .services-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        @media (max-width: 1024px) {
+            .services-two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-left-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-two-column {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .services-package-box {
+                padding: 1.5rem;
+            }
+
+            .services-tab-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .services-tab-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .service-content-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .service-icon-box {
+                min-width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+
+            .services-left-title {
+                font-size: 1.5rem;
+            }
+
+            .services-features-highlight {
+                gap: 0.8rem;
+            }
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: visible;
+        }
+
+        .service-card::before {
+            content: 'ALL FUTURE\ASEARCHES FREE';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-align: center;
+            white-space: pre-line;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5),
+                        0 0 40px rgba(16, 185, 129, 0.3);
+            animation: bonusGlow 2.5s ease-in-out infinite;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.2rem;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.9rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 0.9rem;
+            line-height: 1.5;
+            font-size: 0.85rem;
+        }
+
+        .service-card .best-for {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            color: var(--text-secondary);
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .service-card .btn-primary {
+            width: 100%;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Features Grid Section - Compact */
+        .features-section {
+            padding: 3rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(16, 185, 129, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section - Compact */
+        .how-it-works {
+            padding: 3rem 2rem;
+            background-color: var(--secondary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-bright));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .step:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-bright));
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section - Compact */
+        .reviews-section {
+            padding: 2rem 2rem;
+            background-color: var(--primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .reviews-container-wrapper {
+            position: relative;
+        }
+
+        .reviews-scroll-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-green) var(--card-bg);
+        }
+
+        @media (max-width: 900px) {
+            .reviews-scroll-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .reviews-scroll-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .reviews-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 10px;
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-dark) 100%);
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 0.75rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            opacity: 0.85;
+            filter: brightness(0.8);
+        }
+
+        .review-card::before {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 20px;
+            width: 14px;
+            height: 14px;
+            background: inherit;
+            border-right: 2px solid;
+            border-bottom: 2px solid;
+            border-color: inherit;
+            transform: rotate(45deg);
+            border-radius: 0 0 3px 0;
+            transition: all 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            opacity: 1;
+            filter: brightness(1);
+            z-index: 10;
+        }
+
+        /* Spotlight glow effects for each color */
+        .review-card:nth-child(6n+1):hover {
+            box-shadow: 0 0 40px rgba(0, 188, 212, 0.8), 0 0 80px rgba(0, 188, 212, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+2):hover {
+            box-shadow: 0 0 40px rgba(255, 87, 34, 0.8), 0 0 80px rgba(255, 87, 34, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+3):hover {
+            box-shadow: 0 0 40px rgba(156, 39, 176, 0.8), 0 0 80px rgba(156, 39, 176, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+4):hover {
+            box-shadow: 0 0 40px rgba(139, 195, 74, 0.8), 0 0 80px rgba(139, 195, 74, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+5):hover {
+            box-shadow: 0 0 40px rgba(233, 30, 99, 0.8), 0 0 80px rgba(233, 30, 99, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card:nth-child(6n+6):hover {
+            box-shadow: 0 0 40px rgba(255, 152, 0, 0.8), 0 0 80px rgba(255, 152, 0, 0.4), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dim siblings when one is hovered */
+        .reviews-scroll-container:has(.review-card:hover) .review-card:not(:hover) {
+            opacity: 0.4;
+            filter: brightness(0.4);
+        }
+
+        /* Colorful speech bubble variations */
+        .review-card:nth-child(6n+1) {
+            border-color: #00bcd4;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        }
+        .review-card:nth-child(6n+1)::before {
+            border-color: #00bcd4;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        }
+
+        .review-card:nth-child(6n+2) {
+            border-color: #ff5722;
+            background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+        }
+        .review-card:nth-child(6n+2)::before {
+            border-color: #ff5722;
+            background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+        }
+
+        .review-card:nth-child(6n+3) {
+            border-color: #9c27b0;
+            background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+        }
+        .review-card:nth-child(6n+3)::before {
+            border-color: #9c27b0;
+            background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+        }
+
+        .review-card:nth-child(6n+4) {
+            border-color: #8bc34a;
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        }
+        .review-card:nth-child(6n+4)::before {
+            border-color: #8bc34a;
+            background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+        }
+
+        .review-card:nth-child(6n+5) {
+            border-color: #e91e63;
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+        }
+        .review-card:nth-child(6n+5)::before {
+            border-color: #e91e63;
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+        }
+
+        .review-card:nth-child(6n+6) {
+            border-color: #ff9800;
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+        .review-card:nth-child(6n+6)::before {
+            border-color: #ff9800;
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .review-username {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-text {
+            color: #ffffff;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-text .highlight-word {
+            color: #ffeb3b;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        .review-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .review-date {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.65rem;
+        }
+
+        .review-link-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #ffeb3b;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-card:hover .review-link-indicator {
+            opacity: 1;
+        }
+
+        /* FAQ Section - Compact */
+        .faq-section {
+            padding: 3rem 2rem;
+            background-color: var(--secondary-dark);
+            max-width: 900px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            user-select: none;
+            font-size: 0.95rem;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-green);
+        }
+
+        .faq-toggle {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.2rem 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Footer - Compact */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--text-secondary);
+            padding: 2.5rem 2rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .legal-text {
+            margin: 1.5rem 0;
+            padding: 1.2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .legal-text p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .theme-option {
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .theme-option:hover {
+            border-color: var(--accent-green);
+        }
+
+        .theme-option.active {
+            background-color: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-illustration {
+                max-width: 500px;
+                min-height: 400px;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+                min-height: 600px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn-primary {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .stats {
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 150px;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 130px;
+            }
+        }
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--secondary-dark) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .why-choose-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .why-choose-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .why-choose-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .why-choose-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .why-choose-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .why-choose-link:hover {
+            color: var(--accent-green-bright);
+            transform: translateX(4px);
+        }
+
+        /* Trust Signals Section */
+        .trust-signals-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(16, 185, 129, 0.08) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .trust-signals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .trust-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .trust-column h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 0.75rem 0;
+        }
+
+        .trust-check {
+            font-size: 1.3rem;
+            min-width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-item span:last-child {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .trust-stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .trust-stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .trust-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .why-choose-us {
+                padding: 2rem 1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .trust-signals-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .trust-signal-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-trust-signals {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .trust-signal-item {
+                width: 100%;
+            }
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, var(--secondary-dark) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .learn-more-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .learn-more-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
+            transform: translateY(-6px);
+        }
+
+        .learn-more-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .learn-more-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .learn-more-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .learn-more-cta {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .learn-more-card:hover .learn-more-cta {
+            color: var(--accent-green-bright);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .learn-more-section {
+                padding: 2rem 1rem;
+            }
+
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8EMYSN85L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N8EMYSN85L');
+    </script>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTe            <ul class="nav-links">
+                <li><a onclick="scrollToSection(\'services\')">Services</a></li>
+                <li><a onclick="scrollToSection(\'how-it-works\')">How It Works</a></li>
+                <li><a onclick="scrollToSection(\'reviews\')">Reviews</a></li>
+                <li><a href="what-is-tea-app.html">What is Tea App?</a></li>
+                <li><a href="how-tea-app-works.html">How Tea App Works</a></li>
+                <li><a href="is-tea-app-anonymous.html">Is Tea App Anonymous?</a></li>
+                <li><a href="tea-app-privacy.html">Tea App Privacy</a></li>
+                <li><a href="tea-app-legal-options.html">Tea App Legal</a></li>
+                <li><a href="what-is-tea-app.html">What is Tea App?</a></li>
+                <li><a href="how-tea-app-works.html">How Tea App Works</a></li>
+                <li><a href="is-tea-app-anonymous.html">Is Tea App Anonymous?</a></li>
+                <li><a href="tea-app-privacy.html">Tea App Privacy</a></li>
+                <li><a href="tea-app-legal-options.html">Tea App Legal</a></li>
+                <li><button class="cta-button" onclick="scrollToSection(\'services\')">Get Started</button></li>
+            </ul>app-works.html">How Tea App Works</a></li>
+                <li><a href="is-tea-app-anonymous.html">Is Tea App Anonymous?</a></li>
+                <li><a href="tea-app-privacy.html">Tea App Privacy</a></li>
+                <li><a href="tea-app-legal-options.html">Tea App Legal</a></li>
+                <li><button class="cta-button" onclick="scrollToSection('services')">Get Started</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Animated Thought Bubbles -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Left Content -->
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    ⚠️ THEY'RE TALKING ABOUT YOU
+                </div>
+                <h1 class="hero-title">Worried You're On the Tea App?</h1>
+                <p class="hero-subtitle">Take a breath — we'll check for you.</p>
+                <p class="hero-subtitle" style="margin-top: 1rem; font-size: 1rem; font-weight: 600;">
+                    Fast results. Zero trace. Real proof.
+                </p>
+                <p class="hero-subtitle" style="margin-top: 0.5rem; font-size: 1rem; font-weight: 600;">
+                    None of the stress.
+                </p>
+                <!-- Trust Signals Row -->
+                <div class="hero-trust-signals">
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">🔒</span>
+                        <span class="trust-text">100% Private & Confidential</span>
+                    </div>
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">⚡</span>
+                        <span class="trust-text">Results in Under 6 Hours</span>
+                    </div>
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">✓</span>
+                        <span class="trust-text">Video Evidence Included</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="order.html" class="btn-primary">Start Tea App Search</a>
+                </div>
+            </div>
+
+            <!-- Right Illustration - Thought Cloud -->
+            <div class="hero-illustration">
+                <!-- Cloud Background Shape -->
+                <svg class="cloud-bg" viewBox="0 0 400 400" fill="none">
+                    <path d="M320 200C320 240 290 270 250 280C260 300 250 330 220 340C190 350 160 340 140 320C100 330 60 310 50 270C20 260 0 230 0 200C0 160 30 130 70 120C60 90 80 50 120 40C160 30 200 50 220 80C250 60 300 70 320 110C350 120 370 150 370 190C370 195 345 200 320 200Z" fill="url(#cloudGradient)" transform="translate(15, 20)" />
+                    <defs>
+                        <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#10b981; stop-opacity:0.15" />
+                            <stop offset="100%" style="stop-color:#34d399; stop-opacity:0.1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Thought Bubbles (8 total) - Intense Tea App Specific -->
+                <div class="thought-bubble thought-1">
+                    <p>“Find out what’s being said.”</p>
+                </div>
+                <div class="thought-bubble thought-2">
+                    <p>"Did she really post me…<br>and just didn't tell me?"</p>
+                </div>
+                <div class="thought-bubble thought-3">
+                    <p>"I swear I heard them<br>say my name… and 'posted.'"</p>
+                </div>
+                <div class="thought-bubble thought-4">
+                    <p>"Is that why she ghosted me…<br>because she saw something<br>on Tea?"</p>
+                </div>
+                <div class="thought-bubble thought-5">
+                    <p>"Were they whispering about<br>my Tea App post behind<br>my back?"</p>
+                </div>
+                <div class="thought-bubble thought-6">
+                    <p>"Did my ex post our<br>screenshots… on Tea?"</p>
+                </div>
+                <div class="thought-bubble thought-7">
+                    <p>"What if my crush saw<br>what they said about me<br>on Tea?"</p>
+                </div>
+                <div class="thought-bubble thought-8">
+                    <p>"Are people laughing at<br>my Tea post right now?"</p>
+                </div>
+
+                <!-- Central Figure Silhouette -->
+                <div class="central-figure">
+                    <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+                        <ellipse cx="40" cy="20" rx="18" ry="20" fill="url(#headGradient)" />
+                        <path d="M20 45 C20 35, 60 35, 60 45 L65 95 C65 100, 15 100, 15 95 Z" fill="url(#bodyGradient)" />
+                        <defs>
+                            <linearGradient id="headGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#cbd5e1" />
+                                <stop offset="100%" style="stop-color:#94a3b8" />
+                            </linearGradient>
+                            <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#cbd5e1" />
+                                <stop offset="100%" style="stop-color:#94a3b8" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Icons and Glow -->
+    <section class="stats">
+        <div class="stat-item">
+            <span class="stat-icon">👥</span>
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Profiles Searched</div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-icon">⚡</span>
+            <div class="stat-number">&lt;6hrs</div>
+            <div class="stat-label">Fast Turnaround</div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-icon">🔒</span>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Discreet & Private</div>
+        </div>
+    </section>
+
+
+
+    <!-- Services Section - Two Column Layout -->
+    <section class="services-tabbed" id="services">
+        <div class="services-two-column">
+            <!-- Left Column - Information -->
+            <div class="services-left-column">
+                <h2 class="services-left-title">Get Your Tea App Results</h2>
+                <p class="services-left-subtitle">Choose Your Service Level</p>
+                <p class="services-left-description">We offer two ways to search the Tea App. Whether you want us to handle everything or prefer to take control yourself, we've got you covered with fast, private, and discreet service.</p>
+                
+                <div class="services-features-highlight">
+                    <div class="feature-highlight-item">
+                        <span class="feature-icon">⚡</span>
+                        <div>
+                            <h4>Fast Results</h4>
+                            <p>Get verified results within 6 hours</p>
+                        </div>
+                    </div>
+                    <div class="feature-highlight-item">
+                        <span class="feature-icon">🔒</span>
+                        <div>
+                            <h4>Completely Private</h4>
+                            <p>Your information stays confidential</p>
+                        </div>
+                    </div>
+                    <div class="feature-highlight-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Verified Proof</h4>
+                            <p>Video evidence and screenshots included</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Packages -->
+            <div class="services-right-column">
+                <div class="services-package-box">
+                    <h3 class="package-box-title">Select Your Service</h3>
+                    
+                    <!-- Tab Buttons -->
+                    <div class="services-tab-buttons">
+                        <button onclick="switchService('standard')" id="btn-standard" class="services-tab-btn services-tab-btn-active">
+                            <span class="tab-label">Standard Search</span>
+                            <span class="tab-price">$25</span>
+                        </button>
+                        <button onclick="switchService('self')" id="btn-self" class="services-tab-btn">
+                            <span class="tab-label">Self-Search</span>
+                            <span class="tab-price">$35</span>
+                        </button>
+                    </div>
+
+                    <!-- Standard Search Content -->
+                    <div id="content-standard" class="services-tab-content services-tab-content-active">
+                        <div class="service-content-header">
+                            <div class="service-icon-box">🔍</div>
+                            <div>
+                                <h3>We Do The Work For You</h3>
+                                <p>Our team performs a comprehensive Tea App profile search and provides full video evidence.</p>
+                            </div>
+                        </div>
+                        <ul class="service-features-list">
+                            <li>✅ Professional Tea App profile search performed</li>
+                            <li>✅ Video proof of search included</li>
+                            <li>✅ Screenshots of all matching profiles</li>
+                            <li>✅ Delivered within 6 hours</li>
+                            <li>✅ Post URLs included if found</li>
+                            <li>✅ Dating app background check service</li>
+                        </ul>
+                        <a href="order.html?package=standard" class="services-cta-btn">Order Standard Search - $25</a>
+                    </div>
+
+                    <!-- Self-Search Content -->
+                    <div id="content-self" class="services-tab-content">
+                        <div class="service-content-header">
+                            <div class="service-icon-box">⚡</div>
+                            <div>
+                                <h3>Take Control - Search Yourself</h3>
+                                <p>Get instant access to perform Tea App searches yourself, anytime you want.</p>
+                            </div>
+                        </div>
+                        <ul class="service-features-list">
+                            <li>✅ Instant access to search tools</li>
+                            <li>✅ Search Tea App profiles yourself</li>
+                            <li>✅ Private & completely anonymous</li>
+                            <li>✅ Search as many names as you want</li>
+                            <li>✅ Full control over your searches</li>
+                            <li>✅ Personal dating app verification tool</li>
+                        </ul>
+                        <a href="order.html?package=self" class="services-cta-btn">Get Self-Search Access - $35</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Spacer Section -->
+    <section style="height: 60px; background-color: var(--primary-dark);"></section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <div class="section-badge">Simple Process</div>
+            <h2 class="section-title">Discreet Tea app profile lookup in three steps</h2>
+            <p class="section-subtitle" style="font-weight: 700; color: #1b7a4a;">Simple, fast, and completely confidential</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Choose Your Service</h4>
+                <p>Select the package that fits your needs and fill out the required information form.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Complete Payment</h4>
+                <p>Securely pay through Stripe. No subscriptions, no hidden fees, just a simple one-time transaction.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Get Verified Results</h4>
+                <p>Receive your verified results within 6 hours with clear screenshots, findings, and post URLs if found.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose CheckYourTea?</h2>
+            <p class="section-subtitle">Three reasons our clients trust us with their reputation</p>
+        </div>
+        <div class="why-choose-grid">
+            <div class="why-choose-card">
+                <div class="why-choose-icon">🔍</div>
+                <h3>Professional Verification</h3>
+                <p>We search Tea App comprehensively and verify every post we find. Our process is documented in video format so you have complete proof.</p>
+                <a href="/how-tea-app-works.html" class="why-choose-link">Learn how we verify →</a>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon">🛡️</div>
+                <h3>Complete Privacy</h3>
+                <p>Your information is encrypted and never shared. We understand the sensitivity of reputation concerns and treat every request with absolute discretion.</p>
+                <a href="/tea-app-privacy.html" class="why-choose-link">Understand our privacy commitment →</a>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon">⚖️</div>
+                <h3>Legal Support</h3>
+                <p>Our reports are formatted for legal proceedings and cease & desist letters. Know your rights and take action with confidence.</p>
+                <a href="/tea-app-legal-options.html" class="why-choose-link">Explore your legal options →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals Section -->
+    <section class="trust-signals-section">
+        <div class="trust-signals-container">
+            <div class="trust-column">
+                <h3>Security & Privacy</h3>
+                <div class="trust-item">
+                    <span class="trust-check">🔒</span>
+                    <span>SSL Encrypted Connection</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">🛡️</span>
+                    <span>Zero Data Retention Policy</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">🔐</span>
+                    <span>AES-256 Encryption</span>
+                </div>
+            </div>
+            <div class="trust-column">
+                <h3>Our Guarantees</h3>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>Money-Back Guarantee</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>100% Confidential Service</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>Professional Verification</span>
+                </div>
+            </div>
+            <div class="trust-column">
+                <h3>Social Proof</h3>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">⭐ 4.8/5</div>
+                    <div class="trust-stat-label">Average Rating</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">👥 1,200+</div>
+                    <div class="trust-stat-label">Happy Customers</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">✓ 99%</div>
+                    <div class="trust-stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <h2 class="section-title">Real Reviews from Real Clients</h2>
+            <p class="section-subtitle">Click any card to view the original Reddit comment</p>
+        </div>
+        
+        <div class="reviews-container-wrapper">
+            <div class="reviews-scroll-container" id="reviews-grid">
+                <!-- Reviews will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <div class="section-badge">FAQ</div>
+            <h2 class="section-title">Common Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How fast is the tea app search service?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We deliver Tea App search results within 6 hours. Most Tea App lookups finish even faster, but we guarantee your verified results within a 6‑hour window from the moment your payment is confirmed.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is my request private and discreet?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential. Our secure search methods ensure no one will ever know you checked their Tea App profile or name. <a href="/tea-app-privacy.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">Learn more about our privacy commitment →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What exactly do I get?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Every Tea App search includes a full screen‑recorded video of the entire lookup. If you spot anything in the video that needs deeper investigation, we'll pull the full post for you — including screenshots, context, and direct Tea App URL links.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How does a Tea app lookup work?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We collect the details you provide — name, location, nicknames, social media handles, or phone numbers — and run a full manual Tea App search. Every lookup is recorded on video, includes screenshots of any matches, and gives you a clear, private report of your Tea App results. <a href="/how-tea-app-works.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">See exactly how we verify posts →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can you remove Tea app posts or just find them?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        CheckYourTea.com was created to provide fast, private Tea App searches and accurate Tea App lookups. Our main service is running manual searches for your name, photos, or profile, and upon request we can also guide you toward reputable Tea App removal services. <a href="/tea-app-legal-options.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">Understand your legal options →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Learn More About Tea Section -->
+    <section class="learn-more-section">
+        <div class="section-header">
+            <h2 class="section-title">Learn More About Tea</h2>
+            <p class="section-subtitle">Comprehensive guides to help you understand and protect yourself</p>
+        </div>
+        <div class="learn-more-grid">
+            <a href="/what-is-tea-app.html" class="learn-more-card">
+                <div class="learn-more-icon">📱</div>
+                <h3>What is the Tea App?</h3>
+                <p>A beginner's guide to understanding Tea, how it works, and why it matters for your online reputation.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/how-tea-app-works.html" class="learn-more-card">
+                <div class="learn-more-icon">⚙️</div>
+                <h3>How Does Tea App Work?</h3>
+                <p>Technical breakdown of Tea's features, search functionality, and how our verification process works.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/is-tea-app-anonymous.html" class="learn-more-card">
+                <div class="learn-more-icon">🔐</div>
+                <h3>Is Tea App Anonymous?</h3>
+                <p>The truth about Tea's anonymity features, privacy concerns, and what you need to know about accountability.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/tea-app-legal-options.html" class="learn-more-card">
+                <div class="learn-more-icon">⚖️</div>
+                <h3>Your Legal Rights & Options</h3>
+                <p>Understand your legal protections, cease & desist options, and how to take action against harmful posts.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon">🔍</div>
+                CheckYourTea
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="legal-text">
+                <p><strong>Legal Notice:</strong> CheckYourTea.com is an independent service and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with the Tea app or its developers. Tea is a trademark of its respective owners. This service operates independently and is designed to help users search public information. All lookups are conducted with privacy and discretion in mind.</p>
+            </div>
+            
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <div class="theme-option active" onclick="setTheme('dark')" id="dark-theme">Dark</div>
+                <div class="theme-option" onclick="setTheme('light')" id="light-theme">Light</div>
+            </div>
+            
+            <p class="copyright">© 2026 CheckYourTea. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Service Tab Switching Function
+        function switchService(type) {
+            const stdBtn = document.getElementById('btn-standard');
+            const selfBtn = document.getElementById('btn-self');
+            const stdContent = document.getElementById('content-standard');
+            const selfContent = document.getElementById('content-self');
+
+            if (type === 'standard') {
+                stdBtn.classList.add('services-tab-btn-active');
+                selfBtn.classList.remove('services-tab-btn-active');
+                stdContent.classList.add('services-tab-content-active');
+                selfContent.classList.remove('services-tab-content-active');
+            } else {
+                selfBtn.classList.add('services-tab-btn-active');
+                stdBtn.classList.remove('services-tab-btn-active');
+                selfContent.classList.add('services-tab-content-active');
+                stdContent.classList.remove('services-tab-content-active');
+            }
+        }
+
+        // Theme Toggle Function
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update active state
+            document.getElementById('dark-theme').classList.remove('active');
+            document.getElementById('light-theme').classList.remove('active');
+            document.getElementById(theme + '-theme').classList.add('active');
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+            loadReviews();
+        });
+
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // FAQ toggle function
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Load reviews from JSON file
+        async function loadReviews() {
+            const reviewsGrid = document.getElementById('reviews-grid');
+            
+            try {
+                // Fetch reviews from local JSON file
+                const response = await fetch('reviews.json');
+                const reviews = await response.json();
+                
+                // Shuffle reviews for random order
+                const shuffledReviews = reviews.sort(() => Math.random() - 0.5);
+                
+                // Render review cards
+                shuffledReviews.forEach(review => {
+                    const reviewCard = document.createElement('div');
+                    reviewCard.className = 'review-card';
+                    reviewCard.onclick = () => window.open(review.url, '_blank');
+                    
+                    // Highlight key words in review text
+                    const highlightedText = highlightKeywords(review.text);
+                    
+                    reviewCard.innerHTML = `
+                        <div class="review-header">
+                            <div class="review-username">${review.username}</div>
+                        </div>
+                        <div class="review-text">${highlightedText}</div>
+                        <div class="review-footer">
+                            <div class="review-date">${review.time || '5mo ago'}</div>
+                            <div class="review-link-indicator">View on Reddit →</div>
+                        </div>
+                    `;
+                    
+                    reviewsGrid.appendChild(reviewCard);
+                });
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                reviewCount.textContent = 'Error loading reviews';
+            }
+        }
+        
+        // Highlight key positive words
+        function highlightKeywords(text) {
+            const keywords = [
+                'great', 'amazing', 'excellent', 'fantastic', 'awesome', 'wonderful',
+                'helpful', 'professional', 'quick', 'fast', 'reliable', 'discreet',
+                'recommend', 'impressed', 'perfect', 'best', 'super', 'love',
+                'thank', 'thanks', 'grateful', 'appreciate', 'satisfied', 'happy'
+            ];
+            
+            let highlightedText = text;
+            keywords.forEach(keyword => {
+                const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
+                highlightedText = highlightedText.replace(regex, '<span class="highlight-word">$1</span>');
+            });
+            
+            return highlightedText;
+        }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CheckYourTea",
+  "url": "https://checkyourtea.com",
+  "logo": "https://checkyourtea.com/logo.png",
+  "description": "Professional Tea App search service with verified results and video evidence",
+  "sameAs": [
+    "https://twitter.com/checkyourtea",
+    "https://facebook.com/checkyourtea"
+  ],
+  "contact": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "support@checkyourtea.com"
+  }
+}
+    </script>
+
+    <!-- Service Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Tea App Search Service",
+  "description": "Professional Tea App profile search with video evidence and screenshots",
+  "provider": {
+    "@type": "Organization",
+    "name": "CheckYourTea"
+  },
+  "areaServed": "US",
+  "serviceType": "Online Search Service",
+  "offers": {
+    "@type": "Offer",
+    "price": "25",
+    "priceCurrency": "USD",
+    "name": "Standard Search"
+  }
+}
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast is the tea app search service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We deliver Tea App search results within 6 hours. Most Tea App lookups finish even faster, but we guarantee your verified results within a 6-hour window from the moment your payment is confirmed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my request private and discreet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential."
+      }
+    }
+  ]
+}
+    </script>
+
+</body>
+</html>
