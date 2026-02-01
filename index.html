@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8EMYSN85L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N8EMYSN85L');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tea App Search – Private Tea Profile Lookup & Results in 6 Hours</title>
@@ -282,6 +290,48 @@
             margin-bottom: 2rem;
             line-height: 1.7;
             font-weight: 500;
+        }
+
+        /* Trust Signals Row */
+        .hero-trust-signals {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-top: 2px solid rgba(16, 185, 129, 0.2);
+            border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .trust-signal-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: all 0.3s;
+        }
+
+        .trust-signal-item:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .trust-icon {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
         }
 
         .hero-buttons {
@@ -1532,11 +1582,271 @@
                 min-width: 130px;
             }
         }
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--secondary-dark) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .why-choose-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .why-choose-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .why-choose-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .why-choose-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .why-choose-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .why-choose-link:hover {
+            color: var(--accent-green-bright);
+            transform: translateX(4px);
+        }
+
+        /* Trust Signals Section */
+        .trust-signals-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(16, 185, 129, 0.08) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .trust-signals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .trust-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .trust-column h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 0.75rem 0;
+        }
+
+        .trust-check {
+            font-size: 1.3rem;
+            min-width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-item span:last-child {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .trust-stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .trust-stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .trust-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .why-choose-us {
+                padding: 2rem 1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .trust-signals-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .trust-signal-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-trust-signals {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .trust-signal-item {
+                width: 100%;
+            }
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, var(--secondary-dark) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .learn-more-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .learn-more-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
+            transform: translateY(-6px);
+        }
+
+        .learn-more-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .learn-more-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .learn-more-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .learn-more-cta {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .learn-more-card:hover .learn-more-cta {
+            color: var(--accent-green-bright);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .learn-more-section {
+                padding: 2rem 1rem;
+            }
+
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <header>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8EMYSN85L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N8EMYSN85L');
+    </script>
         <nav>
             <div class="logo">
                 <div class="logo-icon">🔍</div>
@@ -1568,6 +1878,21 @@
                 <p class="hero-subtitle" style="margin-top: 0.5rem; font-size: 1rem; font-weight: 600;">
                     None of the stress.
                 </p>
+                <!-- Trust Signals Row -->
+                <div class="hero-trust-signals">
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">🔒</span>
+                        <span class="trust-text">100% Private & Confidential</span>
+                    </div>
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">⚡</span>
+                        <span class="trust-text">Results in Under 6 Hours</span>
+                    </div>
+                    <div class="trust-signal-item">
+                        <span class="trust-icon">✓</span>
+                        <span class="trust-text">Video Evidence Included</span>
+                    </div>
+                </div>
                 <div class="hero-buttons">
                     <a href="order.html" class="btn-primary">Start Tea App Search</a>
                 </div>
@@ -1779,6 +2104,85 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose CheckYourTea?</h2>
+            <p class="section-subtitle">Three reasons our clients trust us with their reputation</p>
+        </div>
+        <div class="why-choose-grid">
+            <div class="why-choose-card">
+                <div class="why-choose-icon">🔍</div>
+                <h3>Professional Verification</h3>
+                <p>We search Tea App comprehensively and verify every post we find. Our process is documented in video format so you have complete proof.</p>
+                <a href="/how-tea-app-works.html" class="why-choose-link">Learn how we verify →</a>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon">🛡️</div>
+                <h3>Complete Privacy</h3>
+                <p>Your information is encrypted and never shared. We understand the sensitivity of reputation concerns and treat every request with absolute discretion.</p>
+                <a href="/tea-app-privacy.html" class="why-choose-link">Understand our privacy commitment →</a>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon">⚖️</div>
+                <h3>Legal Support</h3>
+                <p>Our reports are formatted for legal proceedings and cease & desist letters. Know your rights and take action with confidence.</p>
+                <a href="/tea-app-legal-options.html" class="why-choose-link">Explore your legal options →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals Section -->
+    <section class="trust-signals-section">
+        <div class="trust-signals-container">
+            <div class="trust-column">
+                <h3>Security & Privacy</h3>
+                <div class="trust-item">
+                    <span class="trust-check">🔒</span>
+                    <span>SSL Encrypted Connection</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">🛡️</span>
+                    <span>Zero Data Retention Policy</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">🔐</span>
+                    <span>AES-256 Encryption</span>
+                </div>
+            </div>
+            <div class="trust-column">
+                <h3>Our Guarantees</h3>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>Money-Back Guarantee</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>100% Confidential Service</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    <span>Professional Verification</span>
+                </div>
+            </div>
+            <div class="trust-column">
+                <h3>Social Proof</h3>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">⭐ 4.8/5</div>
+                    <div class="trust-stat-label">Average Rating</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">👥 1,200+</div>
+                    <div class="trust-stat-label">Happy Customers</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">✓ 99%</div>
+                    <div class="trust-stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Reviews Section -->
     <section class="reviews-section" id="reviews">
         <div class="section-header">
@@ -1818,7 +2222,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential. Our secure search methods ensure no one will ever know you checked their Tea App profile or name.
+                        All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential. Our secure search methods ensure no one will ever know you checked their Tea App profile or name. <a href="/tea-app-privacy.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">Learn more about our privacy commitment →</a>
                     </div>
                 </div>
             </div>
@@ -1840,7 +2244,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        We collect the details you provide — name, location, nicknames, social media handles, or phone numbers — and run a full manual Tea App search. Every lookup is recorded on video, includes screenshots of any matches, and gives you a clear, private report of your Tea App results.
+                        We collect the details you provide — name, location, nicknames, social media handles, or phone numbers — and run a full manual Tea App search. Every lookup is recorded on video, includes screenshots of any matches, and gives you a clear, private report of your Tea App results. <a href="/how-tea-app-works.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">See exactly how we verify posts →</a>
                     </div>
                 </div>
             </div>
@@ -1851,13 +2255,48 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        CheckYourTea.com was created to provide fast, private Tea App searches and accurate Tea App lookups. Our main service is running manual searches for your name, photos, or profile, and upon request we can also guide you toward reputable Tea App removal services.
+                        CheckYourTea.com was created to provide fast, private Tea App searches and accurate Tea App lookups. Our main service is running manual searches for your name, photos, or profile, and upon request we can also guide you toward reputable Tea App removal services. <a href="/tea-app-legal-options.html" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">Understand your legal options →</a>
                     </div>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Learn More About Tea Section -->
+    <section class="learn-more-section">
+        <div class="section-header">
+            <h2 class="section-title">Learn More About Tea</h2>
+            <p class="section-subtitle">Comprehensive guides to help you understand and protect yourself</p>
+        </div>
+        <div class="learn-more-grid">
+            <a href="/what-is-tea-app.html" class="learn-more-card">
+                <div class="learn-more-icon">📱</div>
+                <h3>What is the Tea App?</h3>
+                <p>A beginner's guide to understanding Tea, how it works, and why it matters for your online reputation.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/how-tea-app-works.html" class="learn-more-card">
+                <div class="learn-more-icon">⚙️</div>
+                <h3>How Does Tea App Work?</h3>
+                <p>Technical breakdown of Tea's features, search functionality, and how our verification process works.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/is-tea-app-anonymous.html" class="learn-more-card">
+                <div class="learn-more-icon">🔐</div>
+                <h3>Is Tea App Anonymous?</h3>
+                <p>The truth about Tea's anonymity features, privacy concerns, and what you need to know about accountability.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+            <a href="/tea-app-legal-options.html" class="learn-more-card">
+                <div class="learn-more-icon">⚖️</div>
+                <h3>Your Legal Rights & Options</h3>
+                <p>Understand your legal protections, cease & desist options, and how to take action against harmful posts.</p>
+                <span class="learn-more-cta">Read Guide →</span>
+            </a>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer>
@@ -2013,5 +2452,75 @@
             return highlightedText;
         }
     </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CheckYourTea",
+  "url": "https://checkyourtea.com",
+  "logo": "https://checkyourtea.com/logo.png",
+  "description": "Professional Tea App search service with verified results and video evidence",
+  "sameAs": [
+    "https://twitter.com/checkyourtea",
+    "https://facebook.com/checkyourtea"
+  ],
+  "contact": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "support@checkyourtea.com"
+  }
+}
+    </script>
+
+    <!-- Service Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Tea App Search Service",
+  "description": "Professional Tea App profile search with video evidence and screenshots",
+  "provider": {
+    "@type": "Organization",
+    "name": "CheckYourTea"
+  },
+  "areaServed": "US",
+  "serviceType": "Online Search Service",
+  "offers": {
+    "@type": "Offer",
+    "price": "25",
+    "priceCurrency": "USD",
+    "name": "Standard Search"
+  }
+}
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast is the tea app search service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We deliver Tea App search results within 6 hours. Most Tea App lookups finish even faster, but we guarantee your verified results within a 6-hour window from the moment your payment is confirmed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my request private and discreet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All Tea App searches are 100% anonymous and leave no trace. Your identity, your details, and the fact that you requested a Tea App lookup remain completely confidential."
+      }
+    }
+  ]
+}
+    </script>
+
 </body>
 </html>
