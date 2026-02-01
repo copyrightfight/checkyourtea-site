@@ -1650,43 +1650,43 @@
 
         /* Trust Signals Section */
         .trust-signals-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--secondary-dark) 0%, rgba(16, 185, 129, 0.08) 100%);
-            max-width: 1200px;
+            padding: 2rem 1.5rem;
+            background: rgba(16, 185, 129, 0.03);
+            max-width: 900px;
             margin: 0 auto;
-            border-top: 2px solid var(--border-color);
-            border-bottom: 2px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .trust-signals-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-        }
-
-        .trust-column {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .trust-column h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            margin-bottom: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .trust-item {
             display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 0.75rem 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            transition: all 0.3s ease;
+            min-width: 140px;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-green);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
 
         .trust-check {
-            font-size: 1.3rem;
-            min-width: 30px;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1694,33 +1694,10 @@
 
         .trust-item span:last-child {
             color: var(--text-primary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        .trust-stat {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(16, 185, 129, 0.08);
-            border-radius: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .trust-stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-green);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .trust-stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.3;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            text-align: center;
         }
 
         /* Responsive */
@@ -1735,8 +1712,11 @@
             }
 
             .trust-signals-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
+            }
+
+            .trust-item {
+                min-width: 120px;
             }
 
             .trust-signal-item {
@@ -2135,50 +2115,25 @@
     <!-- Trust Signals Section -->
     <section class="trust-signals-section">
         <div class="trust-signals-container">
-            <div class="trust-column">
-                <h3>Security & Privacy</h3>
-                <div class="trust-item">
-                    <span class="trust-check">🔒</span>
-                    <span>SSL Encrypted Connection</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-check">🛡️</span>
-                    <span>Zero Data Retention Policy</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-check">🔐</span>
-                    <span>AES-256 Encryption</span>
-                </div>
+            <div class="trust-item">
+                <span class="trust-check">🔒</span>
+                <span>SSL Encrypted</span>
             </div>
-            <div class="trust-column">
-                <h3>Our Guarantees</h3>
-                <div class="trust-item">
-                    <span class="trust-check">✓</span>
-                    <span>Money-Back Guarantee</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-check">✓</span>
-                    <span>100% Confidential Service</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-check">✓</span>
-                    <span>Professional Verification</span>
-                </div>
+            <div class="trust-item">
+                <span class="trust-check">🛡️</span>
+                <span>Zero Data Retention</span>
             </div>
-            <div class="trust-column">
-                <h3>Social Proof</h3>
-                <div class="trust-stat">
-                    <div class="trust-stat-number">⭐ 4.8/5</div>
-                    <div class="trust-stat-label">Average Rating</div>
-                </div>
-                <div class="trust-stat">
-                    <div class="trust-stat-number">👥 1,200+</div>
-                    <div class="trust-stat-label">Happy Customers</div>
-                </div>
-                <div class="trust-stat">
-                    <div class="trust-stat-number">✓ 99%</div>
-                    <div class="trust-stat-label">Satisfaction Rate</div>
-                </div>
+            <div class="trust-item">
+                <span class="trust-check">🔐</span>
+                <span>AES-256 Encryption</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-check">✓</span>
+                <span>100% Confidential</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-check">✓</span>
+                <span>Professional</span>
             </div>
         </div>
     </section>
