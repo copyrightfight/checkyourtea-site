@@ -7,7 +7,7 @@ redirects = []
   [functions."*"]
 
 [build]
-publish = "/home/ubuntu/checkyourtea-site"
+publish = "."
 publishOrigin = "default"
 
   [build.environment]
