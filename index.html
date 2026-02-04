@@ -90,8 +90,19 @@
         }
         
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @keyframes pulse {
@@ -117,6 +128,60 @@
                             0 0 60px rgba(16, 185, 129, 0.3),
                             0 0 90px rgba(16, 185, 129, 0.2);
             }
+        }
+
+        @keyframes premiumGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.5); border-color: var(--accent-green); }
+        }
+
+        .premium-bonus-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: premiumGlow 4s infinite ease-in-out;
+            max-width: 550px;
+        }
+
+        .premium-bonus-card::before {
+            content: 'LIMITED TIME OFFER';
+            position: absolute;
+            top: 12px;
+            right: -35px;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .bonus-title {
+            color: var(--accent-green);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .bonus-text {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .bonus-highlight {
+            color: var(--accent-green-bright);
+            text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
         @keyframes bonusGlow {
@@ -215,13 +280,17 @@
         /* Hero Section with Animated Thought Bubbles */
         .hero {
             margin-top: 80px;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--primary-dark) 100%);
-            min-height: 700px;
+            padding: 6rem 2rem;
+            background: radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+                        var(--primary-dark);
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-container {
@@ -277,61 +346,81 @@
 
         /* Escalating Title Styles */
         .hero-title {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-primary);
-            font-size: 2.2rem;
+            font-size: 3.5rem;
+            letter-spacing: -1.5px;
+            background: linear-gradient(to bottom, #ffffff 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.7;
+            margin-bottom: 2rem;
+            line-height: 1.6;
             font-weight: 500;
+            max-width: 500px;
         }
 
-        /* Trust Signals Row */
+        /* Luxurious Hero Mini-Bubbles */
         .hero-trust-signals {
             display: flex;
-            gap: 1rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-            padding: 0;
-            border-top: none;
-            border-bottom: none;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 3rem auto 0;
+            width: 100%;
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            z-index: 10;
         }
 
         .trust-signal-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1rem;
-            background: rgba(16, 185, 129, 0.12);
-            border-radius: 6px;
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            transition: all 0.3s;
-            font-size: 0.85rem;
+            gap: 0.6rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: floatBubble 4s ease-in-out infinite;
+        }
+
+        .trust-signal-item:nth-child(2) { animation-delay: 0.5s; }
+        .trust-signal-item:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .trust-signal-item:hover {
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.1);
             border-color: var(--accent-green);
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
         }
 
         .trust-icon {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--accent-green);
         }
 
         .trust-text {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 700;
             color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             white-space: nowrap;
         }
 
@@ -448,15 +537,15 @@
 
         .stat-item {
             text-align: center;
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            border: 2px solid rgba(16, 185, 129, 0.5);
-            min-width: 160px;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border-radius: 16px;
+            border: 2px solid var(--accent-green);
+            min-width: 200px;
             transition: all 0.3s;
             position: relative;
             animation: glow 3s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.08);
-            background: rgba(16, 185, 129, 0.06);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
         }
 
         .stat-item:hover {
@@ -466,22 +555,22 @@
         }
 
         .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
 
         .stat-number {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--accent-green);
-            margin-bottom: 0.2rem;
-            text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
@@ -1023,11 +1112,12 @@
 
         /* How It Works Section - Compact */
         .how-it-works {
-            padding: 3rem 2rem;
+            padding: 8rem 2rem;
             background-color: var(--secondary-dark);
             max-width: 1200px;
-            margin: 0 auto;
-            transition: background-color 0.3s;
+            margin: 4rem auto;
+            border-radius: 40px;
+            transition: all 0.5s ease;
         }
 
         .steps-grid {
@@ -1091,11 +1181,11 @@
 
         /* Reviews Section - Compact */
         .reviews-section {
-            padding: 2rem 2rem;
+            padding: 8rem 2rem;
             background-color: var(--primary-dark);
             max-width: 1200px;
-            margin: 0 auto;
-            transition: background-color 0.3s;
+            margin: 4rem auto;
+            transition: all 0.5s ease;
         }
 
         .reviews-container-wrapper {
@@ -1329,11 +1419,12 @@
 
         /* FAQ Section - Compact */
         .faq-section {
-            padding: 3rem 2rem;
+            padding: 8rem 2rem;
             background-color: var(--secondary-dark);
-            max-width: 900px;
-            margin: 0 auto;
-            transition: background-color 0.3s;
+            max-width: 1200px;
+            margin: 4rem auto;
+            border-radius: 40px;
+            transition: all 0.5s ease;
         }
 
         .faq-item {
@@ -1585,10 +1676,12 @@
         }
         /* Why Choose Us Section */
         .why-choose-us {
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--secondary-dark) 100%);
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 4rem auto;
+            border-radius: 40px;
+            transition: all 0.5s ease;
         }
 
         .why-choose-grid {
@@ -1747,21 +1840,36 @@
             }
 
             .hero-trust-signals {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 1rem;
+                max-width: 100%;
             }
 
             .trust-signal-item {
                 width: 100%;
+                flex-direction: row;
+                padding: 1rem;
+                justify-content: flex-start;
+                gap: 1.5rem;
+            }
+
+            .trust-icon {
+                margin-bottom: 0;
+            }
+
+            .trust-text {
+                text-align: left;
             }
         }
 
         /* Learn More Section */
         .learn-more-section {
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, var(--secondary-dark) 100%);
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 4rem auto;
+            border-radius: 40px;
+            transition: all 0.5s ease;
         }
 
         .learn-more-grid {
@@ -1879,21 +1987,7 @@
                 <p class="hero-subtitle" style="margin-top: 0.5rem; font-size: 1rem; font-weight: 600;">
                     None of the stress.
                 </p>
-                <!-- Trust Signals Row -->
-                <div class="hero-trust-signals">
-                    <div class="trust-signal-item">
-                        <span class="trust-icon">🔒</span>
-                        <span class="trust-text">100% Private & Confidential</span>
-                    </div>
-                    <div class="trust-signal-item">
-                        <span class="trust-icon">⚡</span>
-                        <span class="trust-text">Results in Under 6 Hours</span>
-                    </div>
-                    <div class="trust-signal-item">
-                        <span class="trust-icon">✓</span>
-                        <span class="trust-text">Video Evidence Included</span>
-                    </div>
-                </div>
+                <!-- Removed from here, moved to bottom of hero -->
                 <div class="hero-buttons">
                     <a href="order.html" class="btn-primary">Start Tea App Search</a>
                 </div>
@@ -1949,12 +2043,28 @@
                                 <stop offset="100%" style="stop-color:#94a3b8" />
                             </linearGradient>
                             <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#cbd5e1" />
-                                <stop offset="100%" style="stop-color:#94a3b8" />
+                                <stop offset="0%" style="stop-color:#94a3b8" />
+                                <stop offset="100%" style="stop-color:#64748b" />
                             </linearGradient>
                         </defs>
                     </svg>
                 </div>
+            </div>
+        </div>
+
+        <!-- Centered Mini-Bubbles at the bottom of Hero -->
+        <div class="hero-trust-signals">
+            <div class="trust-signal-item">
+                <span class="trust-icon">🔒</span>
+                <span class="trust-text">100% Private & Discreet</span>
+            </div>
+            <div class="trust-signal-item">
+                <span class="trust-icon">⚡</span>
+                <span class="trust-text">Results in Under 6 Hours</span>
+            </div>
+            <div class="trust-signal-item">
+                <span class="trust-icon">✓</span>
+                <span class="trust-text">Video Proof Included</span>
             </div>
         </div>
     </section>
@@ -1981,7 +2091,7 @@
 
 
     <!-- Services Section - Two Column Layout -->
-    <section class="services-tabbed" id="services">
+    <section class="services-tabbed reveal" id="services">
         <div class="services-two-column">
             <!-- Left Column - Information -->
             <div class="services-left-column">
@@ -2011,6 +2121,14 @@
                             <p>Video evidence and screenshots included</p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Premium Bonus Offer -->
+                <div class="premium-bonus-card">
+                    <div class="bonus-title">Exclusive Early Adopter Bonus</div>
+                    <p class="bonus-text">
+                        ALL PURCHASES MADE UP TILL <span class="bonus-highlight">MARCH 1ST</span> GET <span class="bonus-highlight">FREE SEARCHING FOR LIFE</span> WITH THEIR PURCHASE!
+                    </p>
                 </div>
             </div>
 
@@ -2076,11 +2194,10 @@
     </section>
 
 
-    <!-- Spacer Section -->
-    <section style="height: 60px; background-color: var(--primary-dark);"></section>
+
 
     <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
+    <section class="how-it-works reveal" id="how-it-works">
         <div class="section-header">
             <div class="section-badge">Simple Process</div>
             <h2 class="section-title">Discreet Tea app profile lookup in three steps</h2>
@@ -2106,7 +2223,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-choose-us">
+    <section class="why-choose-us reveal">
         <div class="section-header">
             <h2 class="section-title">Why Choose CheckYourTea?</h2>
             <p class="section-subtitle">Three reasons our clients trust us with their reputation</p>
@@ -2131,7 +2248,7 @@
 
 
     <!-- Reviews Section -->
-    <section class="reviews-section" id="reviews">
+    <section class="reviews-section reveal" id="reviews">
         <div class="section-header">
             <h2 class="section-title">Real Reviews from Real Clients</h2>
             <p class="section-subtitle">Click any card to view the original Reddit comment</p>
@@ -2145,7 +2262,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section reveal">
         <div class="section-header">
             <div class="section-badge">FAQ</div>
             <h2 class="section-title">Common Questions</h2>
@@ -2211,7 +2328,7 @@
     </section>
 
     <!-- Learn More About Tea Section -->
-    <section class="learn-more-section">
+    <section class="learn-more-section reveal">
         <div class="section-header">
             <h2 class="section-title">Learn More About Tea</h2>
             <p class="section-subtitle">Comprehensive guides to help you understand and protect yourself</p>
@@ -2272,6 +2389,23 @@
     </footer>
 
     <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        document.addEventListener('DOMContentLoaded', reveal);
+
         // Service Tab Switching Function
         function switchService(type) {
             const stdBtn = document.getElementById('btn-standard');
